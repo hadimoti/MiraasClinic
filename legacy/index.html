@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>کلینیک میراث — خدمات دندانپزشکی تخصصی</title>
+<meta name="description" content="کلینیک دندانپزشکی میراث در تهران — خدمات کامپوزیت با تیم متخصص و تجهیزات مدرن" />
+<meta name="keywords" content="دندانپزشک, کامپوزیت, کلینیک دندانپزشکی, تهران, سهانک" />
+<link rel="icon" type="image/png" href="logo/extra/SHAPE.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;500;700;900&family=Vazirmatn:wght@300;400;500;700&family=Montserrat:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* LIGHT THEME */
+  --bg-deep:#F7F4FB;          /* page background */
+  --bg-surface:#FFFFFF;       /* cards */
+  --bg-elevated:#EFEAF8;      /* hovered / tinted surfaces */
+  --bg-dark:#160C22;          /* dark brackets (teeth section) */
+  --text-light:#1F1530;       /* primary text (dark on light) */
+  --text-muted:#6B5A7B;       /* secondary text */
+  --text-dim:#A294B2;         /* tertiary / captions */
+  --border:rgba(31,21,48,0.10);
+  --brand:#C026FF;            /* miraas brand purple — vivid */
+  --brand-deep:#7A0EBF;
+  --a-purple:#A855F7; --a-pink:#EC4899; --a-cyan:#7C3AED; --a-magenta:#D946EF;
+  --a-amber:#F59E0B; --a-rose:#FB7185; --a-green:#10B981; --a-blue:#7C3AED; --a-yellow:#EAB308;
+  --font-fa-display:'Estedad',system-ui,sans-serif;
+  --font-fa-body:'Vazirmatn','Estedad',system-ui,sans-serif;
+  --font-en:'Montserrat',system-ui,sans-serif;
+  --font-wordmark:'Bebas Neue','Anton',sans-serif;
+  --container-pad:clamp(1.5rem,5vw,4rem);
+  --container-max:1400px;
+  --section-y:clamp(4.5rem,10vw,9rem);
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html,body{overflow-x:clip}
+body{
+  background:var(--bg-deep);color:var(--text-light);
+  font-family:var(--font-fa-body);direction:rtl;
+  overflow-x:hidden;line-height:1.7;width:100%;max-width:100vw;
+  -webkit-font-smoothing:antialiased;
+}
+.ltr{direction:ltr;unicode-bidi:isolate}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+::selection{background:var(--brand);color:#fff}
+
+/* film grain */
+body::after{
+  content:'';position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.025;
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+}
+
+.wrap{max-width:var(--container-max);margin:0 auto;padding-inline:var(--container-pad)}
+.glow{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+
+/* ============ NAV ============ */
+.nav{
+  position:fixed;top:0;inset-inline:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem var(--container-pad);
+  transition:background .4s var(--ease),backdrop-filter .4s var(--ease),border-color .4s var(--ease),padding .4s var(--ease);
+  border-bottom:1px solid transparent;
+}
+.nav.scrolled{
+  background:rgba(255,255,255,.78);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);padding-block:.65rem;
+  box-shadow:0 6px 24px -16px rgba(31,21,48,.4);
+}
+.nav__logo{height:47px;width:auto;transition:height .4s var(--ease);
+  filter:drop-shadow(0 0 10px rgba(255,255,255,.9)) drop-shadow(0 0 4px rgba(255,255,255,.8))}
+.nav.scrolled .nav__logo{height:38px}
+.nav__links{display:flex;gap:2rem;align-items:center}
+.nav__links a{font-size:.95rem;color:var(--text-muted);position:relative;transition:color .3s}
+.nav__links a::after{content:'';position:absolute;bottom:-6px;inset-inline:0;height:1px;background:var(--brand);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease)}
+.nav__links a:hover{color:var(--text-light)}
+.nav__links a:hover::after{transform:scaleX(1)}
+.nav__cta{
+  position:relative;overflow:hidden;
+  font-family:var(--font-fa-body);font-size:.92rem;color:#fff;
+  background:linear-gradient(135deg,var(--brand),var(--brand-deep));
+  padding:.6rem 1.4rem;border-radius:999px;border:1px solid rgba(255,255,255,.12);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18);
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+}
+.nav__cta::after{content:'';position:absolute;top:0;left:-60%;width:45%;height:100%;
+  background:linear-gradient(115deg,transparent,rgba(255,255,255,.55),transparent);
+  transform:skewX(-20deg);transition:left .6s var(--ease);pointer-events:none}
+.nav__cta:hover::after{left:130%}
+.nav__cta:hover{color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 8px 26px -8px rgba(192,38,255,.6)}
+.nav__cta:active{transform:scale(.97)}
+.nav__burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+.nav__burger span{width:24px;height:2px;background:var(--brand-deep);border-radius:2px;transition:.3s var(--ease)}
+
+/* ============ HERO ============ */
+/* Tall scroll track; the inner panel is sticky-pinned so the bg video scrubs as you scroll.
+   Sticky never causes horizontal shift and is stable on mobile.
+   Length is short (140vh) so a shorter source video doesn't feel rushed. */
+.hero{position:relative;height:140vh;z-index:1}
+.hero__pin{position:sticky;top:0;height:100dvh;display:flex;align-items:flex-end;overflow:hidden;
+  background:linear-gradient(160deg,#F2EBFB 0%,#F7F4FB 55%,#FFFFFF 100%);
+  contain:layout paint}
+.hero__video-wrap{position:absolute;inset:0;z-index:1;overflow:hidden;contain:strict;width:100%;height:100%}
+/* Bulletproof full-bleed video: 100% box + object-fit cover. No transform-centering,
+   no calc-against-vh — that was the source of the horizontal nudge on mobile. */
+.hero__bgvid{position:absolute;top:0;left:0;width:100%;height:100%;
+  object-fit:cover;object-position:center center;
+  pointer-events:none;display:block;
+  /* GPU-lock so currentTime scrubs don't trigger layout */
+  transform:translateZ(0);backface-visibility:hidden;-webkit-backface-visibility:hidden}
+/* light scrim — soft white wash so the bg video reads as a bright interior, matching the dark site text */
+.hero__video-fade{position:absolute;inset:0;z-index:2;
+  background:
+    linear-gradient(to top,var(--bg-deep) 2%,rgba(247,244,251,.40) 38%,rgba(242,235,251,.18) 70%,rgba(255,255,255,.05) 100%),
+    linear-gradient(115deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,0) 42%);}
+.hero__wordmark{
+  position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-wordmark);font-size:clamp(8rem,26vw,22rem);font-weight:700;
+  color:var(--brand);opacity:.07;letter-spacing:.05em;white-space:nowrap;
+  pointer-events:none;user-select:none;
+}
+.hero__glow1{width:560px;height:560px;background:radial-gradient(circle,var(--brand) 0%,transparent 70%);opacity:.20;top:-120px;inset-inline-start:-100px;z-index:1}
+.hero__glow2{width:480px;height:480px;background:radial-gradient(circle,var(--a-cyan) 0%,transparent 70%);opacity:.14;bottom:-60px;inset-inline-end:-80px;z-index:1}
+.hero__content{position:relative;z-index:3;width:100%;padding-bottom:clamp(3rem,9vh,7rem);will-change:opacity,transform}
+.hero__logo{height:clamp(72px,11vw,118px);width:auto;margin-bottom:1.8rem;
+  mix-blend-mode:multiply;
+  filter:drop-shadow(0 0 14px rgba(255,255,255,.85)) drop-shadow(0 0 6px rgba(255,255,255,.7)) contrast(1.08) saturate(1.05)}
+/* hero supporting text uses the dark theme; only the title is light for cinematic emphasis */
+.kicker{display:flex;align-items:center;gap:1rem;margin-bottom:1.1rem}
+.kicker .rule{height:1px;width:46px;background:var(--brand);opacity:.8}
+.kicker span.t{font-size:.8rem;letter-spacing:.04em;color:var(--brand-deep)}
+.hero__title{font-family:var(--font-fa-display);font-weight:900;font-size:clamp(2.6rem,7vw,5.4rem);line-height:1.12;letter-spacing:-.01em;max-width:14ch;
+  color:#FFFFFF;text-shadow:0 6px 28px rgba(20,12,42,.55),0 2px 6px rgba(20,12,42,.45)}
+.hero__title .accent{color:var(--brand);text-shadow:0 0 12px rgba(255,255,255,.9),0 0 5px rgba(255,255,255,.8)}
+.hero__sub{font-family:var(--font-en);font-weight:300;letter-spacing:.3em;text-transform:uppercase;font-size:clamp(.7rem,1.4vw,.9rem);color:var(--text-muted);margin-top:1.3rem}
+.hero__actions{display:flex;gap:1rem;margin-top:2.4rem;flex-wrap:wrap}
+.scroll-hint{position:absolute;bottom:1.6rem;inset-inline-start:50%;transform:translateX(50%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--text-dim);font-size:.7rem;letter-spacing:.2em}
+.scroll-hint .mouse{width:22px;height:36px;border:1.5px solid var(--text-dim);border-radius:12px;position:relative}
+.scroll-hint .mouse::after{content:'';position:absolute;top:6px;inset-inline-start:50%;transform:translateX(-50%);width:3px;height:7px;background:var(--text-light);border-radius:2px;animation:wheel 1.6s var(--ease) infinite}
+@keyframes wheel{0%{opacity:0;transform:translate(-50%,0)}30%{opacity:1}100%{opacity:0;transform:translate(-50%,10px)}}
+
+/* ============ BUTTONS ============ */
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:.55rem;font-family:var(--font-fa-body);font-size:1rem;
+  padding:.85rem 1.8rem;border-radius:999px;cursor:pointer;border:1px solid transparent;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .3s var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn>*,.nav__cta>*{position:relative;z-index:1}
+.btn--primary,.btn--primary span,.btn--whats,.btn--whats span,.nav__cta,.nav__cta span{color:#fff !important}
+/* moving reflection sheen */
+.btn--primary::after,.btn--whats::after{content:'';position:absolute;top:0;left:-60%;width:45%;height:100%;z-index:0;
+  background:linear-gradient(115deg,transparent,rgba(255,255,255,.5),transparent);
+  transform:skewX(-20deg);transition:left .65s var(--ease);pointer-events:none}
+.btn--primary:hover::after,.btn--whats:hover::after{left:135%}
+.btn--primary{background:linear-gradient(135deg,var(--brand),var(--brand-deep));color:#fff;
+  border-color:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 10px 30px -12px rgba(192,38,255,.6)}
+.btn--primary:hover{color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 14px 40px -10px rgba(192,38,255,.75);transform:translateY(-2px)}
+.btn--whats{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border-color:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.2)}
+.btn--whats:hover{color:#fff;transform:translateY(-2px);box-shadow:0 14px 40px -10px rgba(37,211,102,.6)}
+.btn--ghost{background:rgba(255,255,255,.6);color:var(--text-light);border:1px solid var(--border);backdrop-filter:blur(6px)}
+.btn--ghost:hover{background:rgba(255,255,255,.8);transform:translateY(-2px)}
+.btn svg{width:18px;height:18px}
+
+/* ============ SECTION SHELL ============ */
+.section{position:relative;padding-block:var(--section-y);overflow:hidden}
+.sec-head{max-width:640px;margin-bottom:clamp(2.5rem,5vw,4rem)}
+.sec-head.center{margin-inline:auto;text-align:center}
+.sec-kicker{display:flex;align-items:center;gap:.85rem;margin-bottom:1rem}
+.sec-head.center .sec-kicker{justify-content:center}
+.sec-kicker .rule{height:1px;width:34px;opacity:.7}
+.sec-kicker .t{font-size:.78rem;letter-spacing:.04em}
+.sec-title{font-family:var(--font-fa-display);font-weight:900;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.18;letter-spacing:-.01em}
+.sec-title .accent{color:var(--brand)}
+.sec-desc{color:var(--text-muted);font-size:1.08rem;margin-top:1rem;max-width:56ch}
+.sec-head.center .sec-desc{margin-inline:auto}
+.sec-en{font-family:var(--font-en);font-weight:300;letter-spacing:.3em;text-transform:uppercase;font-size:.72rem;color:var(--text-dim);margin-top:.6rem}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal[data-d="1"]{transition-delay:.08s}.reveal[data-d="2"]{transition-delay:.16s}
+.reveal[data-d="3"]{transition-delay:.24s}.reveal[data-d="4"]{transition-delay:.32s}
+
+/* ============ COMPOSITE INTRO (split) ============ */
+.intro{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,5rem);align-items:center}
+.intro__media{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/5;border:1px solid var(--border);
+  box-shadow:0 30px 80px -40px rgba(0,0,0,.8)}
+.intro__media img{width:100%;height:100%;object-fit:cover}
+.intro__media::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--brand) 0%,transparent 58%);mix-blend-mode:overlay;opacity:.35}
+.intro__media .badge{position:absolute;inset-block-end:1.2rem;inset-inline-start:1.2rem;background:rgba(255,255,255,.78);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.6);border-radius:16px;padding:.8rem 1.1rem;font-size:.85rem;color:var(--text-light);box-shadow:0 8px 24px -12px rgba(31,21,48,.4)}
+.intro__media .badge b{color:var(--brand);font-family:var(--font-fa-display)}
+.benefits{margin-top:1.8rem;display:flex;flex-direction:column;gap:0}
+.benefit{display:flex;gap:1rem;align-items:flex-start;padding:1.05rem 0;border-top:1px solid var(--border)}
+.benefit:last-child{border-bottom:1px solid var(--border)}
+.benefit .ic{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:rgba(192,38,255,.12);color:var(--brand);border:1px solid rgba(192,38,255,.25)}
+.benefit .ic svg{width:18px;height:18px}
+.benefit p{font-size:1.02rem;color:var(--text-light)}
+
+/* ============ SERVICES ============ */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.scard{position:relative;background:var(--bg-surface);border:1px solid var(--border);border-radius:24px;padding:2rem 1.8rem;
+  overflow:hidden;transition:transform .45s var(--ease)}
+.scard::before{content:'';position:absolute;inset:-1px;border-radius:inherit;padding:1px;
+  background:linear-gradient(135deg,var(--ac),transparent 55%);opacity:0;transition:opacity .45s var(--ease);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;z-index:0}
+.scard:hover{transform:translateY(-6px)}
+.scard:hover::before{opacity:.9}
+.scard .num{font-family:var(--font-wordmark);font-size:3.6rem;line-height:.8;color:var(--ac);opacity:.22;position:absolute;top:1rem;inset-inline-start:1.4rem}
+.scard .glowtile{position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,var(--ac),transparent 70%);filter:blur(60px);opacity:.18;top:-60px;inset-inline-end:-40px;transition:opacity .45s}
+.scard:hover .glowtile{opacity:.32}
+.scard .ic-wrap{position:relative;z-index:1;width:54px;height:54px;border-radius:14px;display:grid;place-items:center;
+  background:color-mix(in srgb,var(--ac) 14%,transparent);border:1px solid color-mix(in srgb,var(--ac) 35%,transparent);color:var(--ac);margin-bottom:1.3rem}
+.scard .ic-wrap svg{width:26px;height:26px}
+.scard h3{position:relative;z-index:1;font-family:var(--font-fa-display);font-weight:700;font-size:1.35rem;margin-bottom:.7rem}
+.scard p{position:relative;z-index:1;color:var(--text-muted);font-size:.97rem;margin-bottom:1.1rem}
+.scard ul{position:relative;z-index:1;list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.scard ul li{display:flex;gap:.55rem;align-items:center;font-size:.92rem;color:var(--text-light)}
+.scard ul li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--ac);flex:none}
+
+/* ============ RESULTS 3D SLIDER ============ */
+.results{padding-block:var(--section-y);position:relative}
+.slider3d{position:relative;width:100%;height:clamp(420px,62vh,620px);perspective:1800px;margin-top:1rem}
+.slider3d__stage{position:absolute;inset:0;transform-style:preserve-3d;display:flex;align-items:center;justify-content:center}
+.slide{position:absolute;top:50%;left:50%;width:clamp(220px,30vw,340px);aspect-ratio:9/16;
+  border-radius:20px;overflow:hidden;border:1px solid var(--border);
+  transition:transform .7s var(--ease),opacity .7s var(--ease),filter .7s var(--ease);
+  will-change:transform,opacity;cursor:pointer;background:var(--bg-surface)}
+.slide img{width:100%;height:100%;object-fit:cover}
+.slide::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,15,.55),transparent 55%)}
+.slide.active{box-shadow:0 40px 90px -30px rgba(0,0,0,.9),0 0 0 1px rgba(192,38,255,.4)}
+.slider3d__btn{position:absolute;top:50%;transform:translateY(-50%);z-index:20;width:52px;height:52px;border-radius:50%;
+  background:rgba(255,255,255,.85);backdrop-filter:blur(10px);border:1px solid var(--border);color:var(--text-light);box-shadow:0 10px 30px -14px rgba(31,21,48,.4);
+  display:grid;place-items:center;cursor:pointer;transition:transform .3s var(--ease),background .3s}
+.slider3d__btn:hover{background:var(--brand);transform:translateY(-50%) scale(1.08)}
+.slider3d__btn:active{transform:translateY(-50%) scale(.95)}
+.slider3d__btn svg{width:22px;height:22px}
+.slider3d__btn.prev{inset-inline-start:clamp(.4rem,3vw,2rem)}
+.slider3d__btn.next{inset-inline-end:clamp(.4rem,3vw,2rem)}
+.slider3d__dots{display:flex;gap:.5rem;justify-content:center;margin-top:1.8rem;flex-wrap:wrap}
+.slider3d__dots button{width:8px;height:8px;border-radius:999px;border:0;background:var(--text-dim);cursor:pointer;transition:.4s var(--ease);opacity:.6}
+.slider3d__dots button.on{width:26px;background:var(--brand);opacity:1}
+
+/* ============ FAQ ============ */
+.faq-list{max-width:880px;margin-inline:auto;border-top:1px solid var(--border)}
+.faq{border-bottom:1px solid var(--border)}
+.faq__q{width:100%;background:none;border:0;color:var(--text-light);cursor:pointer;text-align:start;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.5rem .2rem;font-family:var(--font-fa-display);
+  font-size:clamp(1.05rem,2vw,1.25rem);font-weight:500}
+.faq__q .pm{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--border);display:grid;place-items:center;transition:.4s var(--ease);color:var(--brand)}
+.faq.open .faq__q .pm{transform:rotate(45deg);background:var(--brand);color:#fff;border-color:var(--brand)}
+.faq__a{max-height:0;overflow:hidden;transition:max-height .55s var(--ease)}
+.faq__a-inner{padding:0 .2rem 1.6rem;color:var(--text-muted);font-size:1rem}
+.faq__a-inner .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.faq__a-inner .tags span{font-size:.85rem;padding:.35rem .8rem;border-radius:999px;background:rgba(192,38,255,.1);border:1px solid rgba(192,38,255,.22);color:var(--brand)}
+.faq__a-inner .imp{margin-top:1rem;padding:.9rem 1.1rem;border-radius:12px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);color:var(--text-light);font-size:.95rem}
+
+/* ============ AFTERCARE ============ */
+.care-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.care{position:relative;padding:2rem 1.6rem;border-radius:22px;border:1px solid var(--border);background:linear-gradient(160deg,var(--bg-surface),var(--bg-deep))}
+.care .step{font-family:var(--font-wordmark);font-size:1.1rem;letter-spacing:.1em;color:var(--ac);margin-bottom:1rem;display:inline-flex;align-items:center;gap:.6rem}
+.care .step::before{content:'';width:30px;height:1px;background:var(--ac)}
+.care h4{font-family:var(--font-fa-display);font-weight:700;font-size:1.18rem;margin-bottom:.6rem}
+.care p{color:var(--text-muted);font-size:.95rem;margin-bottom:1rem}
+.care ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.care ul li{font-size:.9rem;color:var(--text-light);display:flex;gap:.5rem;align-items:center}
+.care ul li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--ac);flex:none}
+
+/* ============ TECH STRIP ============ */
+.tech{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.tech .item{padding:1.6rem 1.3rem;border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,.02);
+  transition:transform .4s var(--ease),background .4s}
+.tech .item:hover{transform:translateY(-4px);background:rgba(192,38,255,.05)}
+.tech .item .ic{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;background:rgba(192,38,255,.1);color:var(--brand);margin-bottom:1rem}
+.tech .item .ic svg{width:22px;height:22px}
+.tech .item p{font-size:.98rem;color:var(--text-light)}
+
+/* ============ CONTACT ============ */
+.contact{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,4.5rem);align-items:stretch}
+.contact__panel{background:var(--bg-surface);border:1px solid var(--border);border-radius:26px;padding:clamp(1.8rem,3.5vw,2.8rem);position:relative;overflow:hidden}
+.contact__panel .glowtile{position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,var(--brand),transparent 70%);filter:blur(80px);opacity:.16;top:-100px;inset-inline-end:-80px}
+.info-row{display:flex;gap:1rem;align-items:flex-start;padding:1.15rem 0;border-bottom:1px solid var(--border);position:relative;z-index:1}
+.info-row:last-child{border-bottom:0}
+.info-row .ic{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(192,38,255,.1);color:var(--brand);border:1px solid rgba(192,38,255,.2)}
+.info-row .ic svg{width:20px;height:20px}
+.info-row .lbl{font-size:.8rem;color:var(--text-dim);margin-bottom:.25rem}
+.info-row .val{font-size:1.02rem;color:var(--text-light)}
+.info-row .val.ltr{font-family:var(--font-en)}
+.contact__side{display:flex;flex-direction:column;gap:1.4rem}
+.whats-card{background:linear-gradient(150deg,rgba(37,211,102,.14),rgba(18,140,126,.05));border:1px solid rgba(37,211,102,.28);border-radius:26px;padding:clamp(1.8rem,3.5vw,2.6rem);flex:1;display:flex;flex-direction:column;justify-content:center}
+.whats-card .wic{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:rgba(37,211,102,.2);color:#25D366;margin-bottom:1.2rem}
+.whats-card .wic svg{width:30px;height:30px}
+.whats-card h3{font-family:var(--font-fa-display);font-weight:700;font-size:1.4rem;margin-bottom:.7rem}
+.whats-card p{color:var(--text-muted);font-size:.97rem;margin-bottom:1.5rem}
+.whats-card .benefits-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.6rem}
+.whats-card .benefits-pills span{font-size:.82rem;padding:.35rem .8rem;border-radius:999px;background:rgba(37,211,102,.45);border:1px solid rgba(37,211,102,.55);color:#fff}
+.hours-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:26px;padding:clamp(1.6rem,3vw,2.2rem)}
+.hours-card h3{font-family:var(--font-fa-display);font-weight:700;font-size:1.25rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:.6rem}
+.hours-card h3 svg{width:20px;height:20px;color:var(--brand)}
+.hours-row{display:flex;justify-content:space-between;padding:.65rem 0;border-bottom:1px solid var(--border);font-size:.98rem}
+.hours-row:last-child{border-bottom:0}
+.hours-row .day{color:var(--text-muted)}
+.hours-row .time{color:var(--text-light)}
+.hours-row .time.off{color:var(--a-rose)}
+
+/* ============ 3D TEETH (dark bracket) ============ */
+.teeth{position:relative;padding-block:clamp(2rem,5vw,4rem)}
+.teeth__bracket{position:relative;overflow:hidden;border-radius:34px;
+  /* matches the deep teal-navy fade of the 3D tooth render */
+  background:radial-gradient(110% 130% at 70% 50%,#4A2A8F 0%,#251747 45%,#150A24 100%);
+  border:1px solid rgba(220,120,255,.12);
+  box-shadow:0 40px 90px -45px rgba(26,12,44,.85),inset 0 1px 0 rgba(240,180,255,.08);
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(1rem,3vw,2.5rem);
+  padding:clamp(1.6rem,3vw,2.6rem)}
+.teeth__glow{position:absolute;width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle,var(--brand),transparent 70%);filter:blur(110px);opacity:.4;
+  inset-inline-end:-120px;top:-80px;pointer-events:none}
+.teeth__copy{position:relative;z-index:2;padding:clamp(1rem,3vw,2.4rem)}
+.teeth__copy .sec-kicker .t{color:#C4A5F5}
+.teeth__copy .sec-kicker .rule{background:var(--brand)}
+.teeth__copy h2{font-family:var(--font-fa-display);font-weight:900;color:#FAF5FF;
+  font-size:clamp(1.9rem,4vw,3rem);line-height:1.2;letter-spacing:-.01em;margin-bottom:1.1rem}
+.teeth__copy h2 .accent{color:var(--brand)}
+.teeth__copy p{color:#BEA9D2;font-size:1.06rem;max-width:46ch;margin-bottom:1.2rem}
+.teeth__list{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.8rem}
+.teeth__list li{display:flex;gap:.6rem;align-items:center;color:#DED6F0;font-size:.98rem}
+.teeth__list li svg{width:18px;height:18px;color:var(--brand);flex:none}
+.teeth__stage{position:relative;z-index:1;min-height:clamp(380px,52vw,580px);display:grid;place-items:center;isolation:isolate}
+/* soft cyan halo behind the tooth — gentle, just enough to lift the dark frame into the bracket */
+.teeth__stage::before{content:'';position:absolute;z-index:0;
+  width:clamp(420px,55vw,640px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(220,120,255,.22) 0%,rgba(180,38,240,.12) 35%,rgba(180,30,220,.05) 60%,transparent 78%);
+  filter:blur(36px);pointer-events:none;
+  animation:teethHaloPulse 7s ease-in-out infinite}
+.teeth__stage::after{content:'';position:absolute;z-index:0;
+  width:clamp(300px,40vw,460px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(240,180,255,.18) 0%,rgba(220,120,255,.07) 55%,transparent 78%);
+  filter:blur(22px);pointer-events:none;mix-blend-mode:screen}
+@keyframes teethHaloPulse{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.04);opacity:.72}}
+/* transparent-alpha webm — feathered edges blend the dark rim into the bracket;
+   screen blend mode lifts the black/dark pixels of the rim toward the cyan bracket */
+.teeth__video{position:relative;z-index:2;width:100%;max-width:484px;height:auto;
+  -webkit-mask-image:radial-gradient(ellipse 95% 92% at center,#000 60%,rgba(0,0,0,.85) 78%,rgba(0,0,0,.4) 92%,transparent 100%);
+          mask-image:radial-gradient(ellipse 95% 92% at center,#000 60%,rgba(0,0,0,.85) 78%,rgba(0,0,0,.4) 92%,transparent 100%);
+  /* very gentle cyan-tinted shadow only — no heavy glow */
+  filter:drop-shadow(0 22px 22px rgba(38,20,72,.45)) drop-shadow(0 0 18px rgba(200,50,255,.18))}
+.teeth__ring{position:absolute;width:78%;aspect-ratio:1;border-radius:50%;
+  border:1px solid rgba(220,120,255,.18);pointer-events:none}
+.teeth__ring.r2{width:58%;border-color:rgba(220,120,255,.12)}
+@media(max-width:880px){
+  .teeth__bracket{grid-template-columns:1fr;text-align:start}
+  .teeth__stage{order:-1;min-height:clamp(260px,70vw,360px)}
+}
+
+/* ============ FOOTER ============ */
+.footer{position:relative;border-top:1px solid var(--border);padding-block:clamp(3rem,6vw,5rem) 2rem;overflow:hidden}
+.footer__word{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-wordmark);
+  font-size:clamp(6rem,22vw,18rem);color:var(--brand);opacity:.06;pointer-events:none;user-select:none;white-space:nowrap}
+.footer__grid{position:relative;z-index:1;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;margin-bottom:3rem}
+.footer__logo{height:46px;width:auto;margin-bottom:1.2rem}
+.footer__grid p{color:var(--text-muted);font-size:.95rem;max-width:38ch}
+.footer h5{font-family:var(--font-fa-display);font-weight:700;font-size:1.05rem;margin-bottom:1rem}
+.footer ul{list-style:none;display:flex;flex-direction:column;gap:.65rem}
+.footer ul li a{color:var(--text-muted);font-size:.95rem;transition:color .3s}
+.footer ul li a:hover{color:var(--brand)}
+.footer__socials{display:flex;gap:.8rem;margin-top:1.4rem}
+.footer__socials a{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;border:1px solid var(--border);background:rgba(255,255,255,.02);color:var(--text-muted);transition:.3s var(--ease)}
+.footer__socials a:hover{color:var(--brand);border-color:rgba(192,38,255,.35);transform:translateY(-3px)}
+.footer__socials a svg{width:20px;height:20px}
+.footer__bottom{position:relative;z-index:1;border-top:1px solid var(--border);padding-top:1.6rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--text-dim);font-size:.85rem}
+.footer__bottom .en{font-family:var(--font-en);letter-spacing:.2em}
+
+/* floating whatsapp */
+.fab{position:fixed;bottom:1.4rem;inset-inline-start:1.4rem;z-index:55;width:58px;height:58px;border-radius:50%;
+  background:linear-gradient(135deg,#25D366,#128C7E);display:grid;place-items:center;color:#fff;
+  box-shadow:0 12px 34px -8px rgba(37,211,102,.6);transition:transform .35s var(--ease)}
+.fab:hover{transform:scale(1.1) rotate(6deg)}
+.fab svg{width:30px;height:30px}
+.fab::before{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid #25D366;animation:ping 2.4s var(--ease) infinite}
+@keyframes ping{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.7);opacity:0}}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:980px){
+  .intro,.contact{grid-template-columns:1fr}
+  .services-grid,.care-grid{grid-template-columns:1fr}
+  .tech{grid-template-columns:repeat(2,1fr)}
+  .footer__grid{grid-template-columns:1fr 1fr}
+  /* hero kicker reads white on the cinematic bg on phone/tablet */
+  .hero .kicker span.t{color:#FFFFFF;text-shadow:0 1px 6px rgba(20,12,42,.5)}
+  .hero .kicker .rule{background:#FFFFFF;opacity:.85}
+}
+@media(max-width:768px){
+  .nav{padding-inline:1.1rem}
+  .nav__links{position:fixed;inset:0 0 0 auto;width:min(80vw,320px);flex-direction:column;justify-content:center;
+    background:rgba(255,255,255,.97);backdrop-filter:blur(20px);padding:2rem;gap:1.6rem;transform:translateX(100%);
+    transition:transform .45s var(--ease);border-inline-start:1px solid var(--border);z-index:49}
+  .nav__links.open{transform:translateX(0)}
+  .nav__links a{font-size:1.15rem}
+  .nav__cta{align-self:flex-start}
+  .nav__burger{display:flex;z-index:51}
+  .nav__burger.x span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav__burger.x span:nth-child(2){opacity:0}
+  .nav__burger.x span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  /* shorter scroll track so the pinned hero doesn't feel like dead scrolling on tall phones */
+  .hero{height:130vh}
+  .hero__title{font-size:clamp(2.2rem,9vw,3rem)}
+  .hero__actions{gap:.7rem}
+  .hero__actions .btn{padding:.75rem 1.3rem;font-size:.95rem}
+  .footer__grid{grid-template-columns:1fr;gap:2rem}
+  .footer__bottom{flex-direction:column;text-align:center}
+  .slide{width:clamp(190px,64vw,260px)}
+  .teeth__video{max-width:82vw}
+  .fab{width:52px;height:52px;bottom:1rem;inset-inline-start:1rem}
+  .fab svg{width:26px;height:26px}
+  .slider3d__btn{width:44px;height:44px}
+}
+@media(max-width:430px){
+  .hero{height:120vh}
+  .sec-title{font-size:clamp(1.8rem,7.5vw,2.3rem)}
+  .scard,.care{padding:1.6rem 1.3rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+  .hero{height:100dvh}
+  .hero__pin{position:relative}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#hero" aria-label="میراث"><img src="logo/english-shape.png" alt="MIRAAS" class="nav__logo"></a>
+  <div class="nav__links" id="navLinks">
+    <a href="#services">خدمات</a>
+    <a href="#results">نمونه کارها</a>
+    <a href="#faq">سوالات متداول</a>
+    <a href="#aftercare">مراقبت</a>
+    <a href="#contact">تماس</a>
+    <a href="https://wa.me/989125168278" class="nav__cta"><span>درخواست نوبت</span></a>
+  </div>
+  <button class="nav__burger" id="burger" aria-label="منو"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="hero">
+  <div class="hero__pin">
+    <div class="glow hero__glow1"></div>
+    <div class="glow hero__glow2"></div>
+    <div class="hero__video-wrap">
+      <video class="hero__bgvid" id="heroVideo" src="BGNEW.webm" muted playsinline preload="auto" autoplay loop></video>
+      <div class="hero__video-fade"></div>
+    </div>
+    <div class="hero__wordmark">MIRAAS</div>
+    <div class="hero__content" id="heroContent">
+      <div class="wrap">
+        <img src="logo/persian-shape.png" alt="کلینیک میراث" class="hero__logo reveal">
+        <div class="kicker reveal" data-d="1"><span class="rule"></span><span class="t">کلینیک تخصصی دندانپزشکی — تهران</span></div>
+        <h1 class="hero__title reveal" data-d="1">لبخندی که <span class="accent">شایسته‌اش</span><br>هستید</h1>
+        <p class="hero__sub reveal" data-d="2">BEAUTY IS A SIGN OF HEALTH</p>
+        <div class="hero__actions reveal" data-d="3">
+          <a href="https://wa.me/989125168278" class="btn btn--primary"><span>درخواست نوبت</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#services" class="btn btn--ghost">مشاهده خدمات</a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint" id="scrollHint"><div class="mouse"></div><span>SCROLL</span></div>
+  </div>
+</header>
+
+<!-- COMPOSITE INTRO -->
+<section class="section" id="about">
+  <div class="glow" style="width:420px;height:420px;background:radial-gradient(circle,var(--a-cyan),transparent 70%);opacity:.12;top:10%;inset-inline-start:-120px"></div>
+  <div class="wrap">
+    <div class="intro">
+      <div class="intro__media reveal">
+        <img src="results/photo_5_2026-05-27_19-06-46.jpg" alt="نتیجه کامپوزیت دندان">
+        <div class="badge">دوام <b>۵ تا ۸ سال</b> با مراقبت صحیح</div>
+      </div>
+      <div>
+        <div class="sec-kicker reveal"><span class="rule" style="background:var(--brand)"></span><span class="t" style="color:var(--brand)">درباره کامپوزیت</span></div>
+        <h2 class="sec-title reveal" data-d="1">کامپوزیت دندانی <span class="accent">چیست؟</span></h2>
+        <p class="sec-desc reveal" data-d="1">کامپوزیت یک ماده رزینی است که برای ترمیم و زیباسازی دندان‌ها استفاده می‌شود؛ روشی مدرن و موثر برای ساختن لبخندی طبیعی و ماندگار.</p>
+        <div class="benefits">
+          <div class="benefit reveal" data-d="1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span><p>رنگ طبیعی و زیبا، هماهنگ با دندان‌های شما</p></div>
+          <div class="benefit reveal" data-d="2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span><p>دوام خوب بین ۵ تا ۸ سال با مراقبت درست</p></div>
+          <div class="benefit reveal" data-d="3"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span><p>حفاظت بیشتر دندان و عملکرد بهتر</p></div>
+          <div class="benefit reveal" data-d="4"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span><p>ترمیم فواصل، شکستگی‌ها و اصلاح رنگ دندان</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <div class="sec-kicker"><span class="rule" style="background:var(--brand)"></span><span class="t" style="color:var(--brand)">خدمات کامپوزیت</span><span class="rule" style="background:var(--brand)"></span></div>
+      <h2 class="sec-title">سه راز یک کامپوزیت <span class="accent">بی‌نقص</span></h2>
+      <p class="sec-desc">کامپوزیت یک روش مدرن و موثر برای زیباسازی و ترمیم دندان‌هاست — کیفیت آن به سه عامل کلیدی بستگی دارد.</p>
+      <p class="sec-en ltr">COMPOSITE SERVICES</p>
+    </div>
+    <div class="services-grid" id="servicesGrid"></div>
+  </div>
+</section>
+
+<!-- RESULTS 3D SLIDER -->
+<section class="results" id="results">
+  <div class="glow" style="width:520px;height:520px;background:radial-gradient(circle,var(--a-magenta),transparent 70%);opacity:.12;top:0;inset-inline-end:-140px"></div>
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <div class="sec-kicker"><span class="rule" style="background:var(--a-magenta)"></span><span class="t" style="color:var(--a-magenta)">نمونه کارها</span><span class="rule" style="background:var(--a-magenta)"></span></div>
+      <h2 class="sec-title">لبخندهایی که <span class="accent" style="color:var(--a-magenta)">ساخته‌ایم</span></h2>
+      <p class="sec-en ltr">REAL RESULTS</p>
+    </div>
+  </div>
+  <div class="slider3d reveal" id="slider">
+    <div class="slider3d__stage" id="stage"></div>
+    <button class="slider3d__btn prev" id="prev" aria-label="قبلی"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+    <button class="slider3d__btn next" id="next" aria-label="بعدی"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+  </div>
+  <div class="slider3d__dots" id="dots"></div>
+</section>
+
+<!-- 3D TEETH (dark bracket) -->
+<section class="teeth" id="teeth">
+  <div class="wrap">
+    <div class="teeth__bracket reveal">
+      <div class="teeth__glow"></div>
+      <div class="teeth__copy">
+        <div class="sec-kicker"><span class="rule"></span><span class="t">دقت در جزئیات</span></div>
+        <h2>هر دندان، یک <span class="accent">اثر هنری</span> دقیق</h2>
+        <p>کامپوزیت یعنی بازسازی فرم، تناسب و رنگ هر دندان با ظرافت کامل. ما با تصویربرداری سه‌بعدی و طراحی لبخند، نتیجه را پیش از شروع درمان به شما نشان می‌دهیم.</p>
+        <ul class="teeth__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>طراحی دیجیتال لبخند پیش از درمان</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>تناسب فرم دندان با چهره شما</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>انتخاب رنگ طبیعی و هماهنگ</li>
+        </ul>
+        <a href="https://wa.me/989125168278?text=مشاوره" target="_blank" rel="noopener" class="btn btn--primary"><span>مشاوره طراحی لبخند</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="teeth__stage">
+        <span class="teeth__ring"></span><span class="teeth__ring r2"></span>
+        <video class="teeth__video" id="teethVideo" src="motion/teeth-new.webm" muted playsinline preload="auto" loop autoplay></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <div class="sec-kicker"><span class="rule" style="background:var(--brand)"></span><span class="t" style="color:var(--brand)">سوالات متداول</span><span class="rule" style="background:var(--brand)"></span></div>
+      <h2 class="sec-title">پاسخ به <span class="accent">پرسش‌های شما</span></h2>
+      <p class="sec-desc">هر آنچه درباره خدمات کامپوزیت لازم است بدانید.</p>
+    </div>
+    <div class="faq-list reveal" id="faqList"></div>
+  </div>
+</section>
+
+<!-- AFTERCARE -->
+<section class="section" id="aftercare">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker"><span class="rule" style="background:var(--a-amber)"></span><span class="t" style="color:var(--a-amber)">نکات پس از درمان</span></div>
+      <h2 class="sec-title">با رعایت <span class="accent" style="color:var(--a-amber)">سه عامل</span>، نتیجه ماندگار می‌ماند</h2>
+    </div>
+    <div class="care-grid" id="careGrid"></div>
+  </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section class="section" id="tech">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <div class="sec-kicker"><span class="rule" style="background:var(--brand)"></span><span class="t" style="color:var(--brand)">تکنولوژی و تجهیزات</span><span class="rule" style="background:var(--brand)"></span></div>
+      <h2 class="sec-title">با بهترین تکنولوژی‌های <span class="accent">روز دنیا</span></h2>
+    </div>
+    <div class="tech reveal" id="techGrid"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="glow" style="width:460px;height:460px;background:radial-gradient(circle,var(--brand),transparent 70%);opacity:.1;bottom:0;inset-inline-start:-140px"></div>
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <div class="sec-kicker"><span class="rule" style="background:var(--brand)"></span><span class="t" style="color:var(--brand)">ارتباط با ما</span><span class="rule" style="background:var(--brand)"></span></div>
+      <h2 class="sec-title">برای <span class="accent">مشاوره رایگان</span> در تماس باشید</h2>
+    </div>
+    <div class="contact">
+      <div class="contact__panel reveal">
+        <div class="glowtile"></div>
+        <div class="info-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><div class="lbl">آدرس کلینیک</div><div class="val">تهران، سهانک، خیابان بخشایش، کوچه ۱۷ام، برج عرفان</div></div></div>
+        <div class="info-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><div><div class="lbl">تماس مستقیم</div><div class="val ltr">۰۹۱۲ ۵۹۳ ۴۳۰۲ &nbsp;|&nbsp; ۰۹۱۲ ۵۱۶ ۸۲۷۸</div></div></div>
+        <div class="info-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><div><div class="lbl">ساعات کاری</div><div class="val">شنبه تا پنجشنبه — ۱۰ صبح تا ۷ عصر</div></div></div>
+        <div class="info-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span><div><div class="lbl">مسیریابی</div><div class="val">جستجو در گوگل مپس: «کلینیک میراث سهانک»</div></div></div>
+        <div style="margin-top:1.6rem;position:relative;z-index:1">
+          <a href="https://maps.google.com/?q=کلینیک+میراث+سهانک" target="_blank" rel="noopener" class="btn btn--ghost">مشاهده در نقشه
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14L21 3"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="contact__side">
+        <div class="whats-card reveal" data-d="1">
+          <div class="wic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.9 5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4a.5.5 0 0 0 0-.5c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c.6.3 1.1.4 1.5.5a3.6 3.6 0 0 0 1.6.1 2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></div>
+          <h3>مشاوره رایگان در واتساپ</h3>
+          <p>کافی است کلمه «مشاوره» را در واتساپ برای ما ارسال کنید. متخصصین ما به سوالات شما پاسخ می‌دهند و شرایط فکی و دندانی شما را بررسی می‌کنند.</p>
+          <div class="benefits-pills"><span>مشاوره رایگان</span><span>پاسخ متخصصانه</span><span>طرح درمان شخصی</span><span>پاسخ سریع</span></div>
+          <a href="https://wa.me/989125168278?text=مشاوره" target="_blank" rel="noopener" class="btn btn--whats" style="align-self:flex-start">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.9 5-1.3A10 10 0 1 0 12 2z"/></svg>
+            <span>تماس از طریق واتساپ</span>
+          </a>
+        </div>
+        <div class="hours-card reveal" data-d="2">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ساعات کاری</h3>
+          <div class="hours-row"><span class="day">شنبه تا چهارشنبه</span><span class="time">۱۰:۰۰ — ۱۹:۰۰</span></div>
+          <div class="hours-row"><span class="day">پنجشنبه</span><span class="time">۱۰:۰۰ — ۱۵:۰۰</span></div>
+          <div class="hours-row"><span class="day">جمعه</span><span class="time off">تعطیل</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__word">MIRAAS</div>
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="logo/english-shape.png" alt="MIRAAS" class="footer__logo">
+        <p>کلینیک تخصصی دندانپزشکی میراث — مراقبت دندانی مدرن و حرفه‌ای با تمرکز بر خدمات کامپوزیت و زیباسازی لبخند.</p>
+        <div class="footer__socials">
+          <a href="https://wa.me/989125168278" aria-label="واتساپ"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.9 5-1.3A10 10 0 1 0 12 2z"/></svg></a>
+          <a href="https://maps.google.com/?q=کلینیک+میراث+سهانک" aria-label="نقشه"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></a>
+          <a href="tel:+989125934302" aria-label="تماس"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h5>دسترسی سریع</h5>
+        <ul>
+          <li><a href="#about">درباره کامپوزیت</a></li>
+          <li><a href="#services">خدمات</a></li>
+          <li><a href="#results">نمونه کارها</a></li>
+          <li><a href="#faq">سوالات متداول</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>تماس</h5>
+        <ul>
+          <li><a href="tel:+989125934302" class="ltr">۰۹۱۲ ۵۹۳ ۴۳۰۲</a></li>
+          <li><a href="https://wa.me/989125168278" class="ltr">۰۹۱۲ ۵۱۶ ۸۲۷۸</a></li>
+          <li><a href="#contact">سهانک — بخشایش — برج عرفان</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© ۱۴۰۵ کلینیک میراث — تمامی حقوق محفوظ است.</span>
+      <span class="en">BEAUTY IS A SIGN OF HEALTH</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/989125168278?text=مشاوره" class="fab" aria-label="واتساپ" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.9 5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4a.5.5 0 0 0 0-.5c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c.6.3 1.1.4 1.5.5a3.6 3.6 0 0 0 1.6.1 2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>
+</a>
+
+<script>
+/* ---------- DATA ---------- */
+const ACCENTS=['var(--a-cyan)','var(--brand)','var(--a-amber)'];
+const SERVICES=[
+ {n:'1',t:'اجرای اصولی کامپوزیت',d:'یکی از مهم‌ترین عوامل ماندگاری و سلامت کامپوزیت، اجرای اصولی آن توسط دندان‌پزشک متخصص است.',
+  items:['تکنیک‌های مدرن روز','مهارت و تجربه دندان‌پزشک','دقت بالا در انجام کار','ابزارهای حرفه‌ای'],
+  ic:'<path d="M12 5.5c-1.5-2-4-2.5-5.5-1C5 6 5 9 6 12c.7 2 .5 6 2 6s1.3-3 4-3 2.5 3 4 3 1.3-4 2-6c1-3 1-6-.5-7.5-1.5-1.5-4-1-5.5 1z"/>'},
+ {n:'2',t:'رعایت بهداشت دهان و دندان',d:'بهداشت صحیح مهم‌ترین عامل برای ماندگاری کامپوزیت و جلوگیری از بوی نامطبوع است.',
+  items:['نخ دندان روزانه','مسواک حداقل دو بار در روز','شستشو با دهانشویه','مراجعه دوره‌ای'],
+  ic:'<path d="M12 2a4 4 0 0 0-4 4c0 1.5.5 2.5 1 4s.5 4 .5 6 .8 4 2.5 4 2.5-2 2.5-4 0-4.5.5-6 1-2.5 1-4a4 4 0 0 0-4-4z"/>'},
+ {n:'3',t:'استفاده از برند مرغوب',d:'استفاده از کامپوزیت‌های نانوسرامیک با کیفیت بالا، دوام و زیبایی نتیجه را تضمین می‌کند.',
+  items:['کامپوزیت نانوسرامیک','کیفیت بسیار بالا','دوام و پایداری بیشتر','رنگ‌پذیری کمتر'],
+  ic:'<path d="M12 2l3 6 6 .5-4.5 4 1.5 6-6-3.5L6 18.5 7.5 12.5 3 8.5 9 8z"/>'},
+];
+const FAQ=[
+ {q:'آیا دندان‌های نامرتب را می‌شود کامپوزیت کرد؟',a:'بستگی به میزان نامنظمی دندان‌ها دارد. اگر نامنظمی خفیف باشد، کامپوزیت می‌تواند آن را اصلاح کند؛ اما در نامنظمی شدید، درمان ارتودنسی ارجح است. برای تعیین بهترین روش، مشاوره دندان‌پزشک ضروری است.'},
+ {q:'کامپوزیت چند سال دوام دارد؟',a:'در صورت اجرای صحیح و باکیفیت، بین ۵ تا ۸ سال دوام دارد. البته رفتار و مراقبت شخص نیز عامل مهمی در ماندگاری کامپوزیت است.',tags:['کیفیت اجرا','رعایت بهداشت','عادات غذایی','مراقبت روزانه']},
+ {q:'چگونه باید رنگ کامپوزیت را انتخاب کنیم؟',a:'رنگ باید با توجه به سلیقه، رنگ پوست، رنگ پایه دندان‌ها و سفیدی چشم‌ها انتخاب شود.',tags:['رنگ پوست','رنگ طبیعی دندان','سفیدی چشم‌ها','سلیقه فردی'],imp:'سفیدی کامپوزیت نباید از سفیدی چشم‌ها بیشتر باشد و نباید تفاوت زیادی با رنگ پوست داشته باشد، چون غیرطبیعی جلوه می‌کند.'},
+ {q:'آیا کامپوزیت باعث بوی بد دهان می‌شود؟',a:'این موضوع به کیفیت اجرا بستگی دارد. اگر کامپوزیت اصولی انجام شود و شخص بهداشت را رعایت کند، بوی بدی ناشی از کامپوزیت نخواهد بود.',tags:['اجرای صحیح','رعایت بهداشت','نخ دندان روزانه','مسواک صحیح']},
+ {q:'کامپوزیت چه مشکلاتی را اصلاح می‌کند؟',a:'کامپوزیت توانایی اصلاح بسیاری از معایب دندانی را دارد، از جمله:',tags:['فواصل بین دندانی','شکستگی‌های جزئی','لب‌پریدگی','نامرتبی خفیف','تغییر رنگ','تراشیدگی لبه']},
+];
+const CARE=[
+ {n:'01',t:'رعایت بهداشت دهان و دندان',d:'مهم‌ترین عاملی که باعث می‌شود کامپوزیت سالم و بدون بو بماند.',items:['نخ دندان روزانه','مسواک دو بار در روز','شستشو با دهانشویه','تمیزی عمیق ماهانه']},
+ {n:'02',t:'تنظیم رژیم و عادات',d:'با پرهیز از عوامل رنگ‌زا، زیبایی کامپوزیت پایدار می‌ماند.',items:['پرهیز از غذاهای رنگ‌زا','عدم مصرف دخانیات','مصرف آب کافی','تنظیم رژیم غذایی']},
+ {n:'03',t:'مراجعه دوره‌ای',d:'بازدید منظم از دندان‌پزشک، ماندگاری نتیجه را تضمین می‌کند.',items:['بازدید هر ۶ ماه','بررسی وضعیت کامپوزیت','تمیزی حرفه‌ای','اصلاح در صورت نیاز']},
+];
+const TECH=[
+ {t:'دستگاه‌های دندانی مدرن',ic:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/>'},
+ {t:'نورهای LED مخصوص',ic:'<path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/>'},
+ {t:'ابزارهای دقیق و حرفه‌ای',ic:'<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2-2 2.5-2.5z"/>'},
+ {t:'مواد اولیه با کیفیت بالا',ic:'<path d="M12 2l3 6 6 .5-4.5 4 1.5 6-6-3.5L6 18.5 7.5 12.5 3 8.5 9 8z"/>'},
+];
+const RESULTS=Array.from({length:12},(_,i)=>`results/photo_${i+1}_2026-05-27_19-06-46.jpg`);
+
+/* ---------- RENDER ---------- */
+const svg=(p,sw=2)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+document.getElementById('servicesGrid').innerHTML=SERVICES.map((s,i)=>`
+ <article class="scard reveal" data-d="${i+1}" style="--ac:${ACCENTS[i]}">
+   <span class="num">${s.n}</span><span class="glowtile"></span>
+   <div class="ic-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${s.ic}</svg></div>
+   <h3>${s.t}</h3><p>${s.d}</p>
+   <ul>${s.items.map(x=>`<li>${x}</li>`).join('')}</ul>
+ </article>`).join('');
+
+document.getElementById('faqList').innerHTML=FAQ.map(f=>`
+ <div class="faq">
+   <button class="faq__q">${f.q}<span class="pm">${svg('<path d="M12 5v14M5 12h14"/>')}</span></button>
+   <div class="faq__a"><div class="faq__a-inner"><p>${f.a}</p>
+   ${f.tags?`<div class="tags">${f.tags.map(t=>`<span>${t}</span>`).join('')}</div>`:''}
+   ${f.imp?`<div class="imp">${f.imp}</div>`:''}</div></div>
+ </div>`).join('');
+
+document.getElementById('careGrid').innerHTML=CARE.map((c,i)=>`
+ <div class="care reveal" data-d="${i+1}" style="--ac:${ACCENTS[i]}">
+   <span class="step">${c.n}</span><h4>${c.t}</h4><p>${c.d}</p>
+   <ul>${c.items.map(x=>`<li>${x}</li>`).join('')}</ul>
+ </div>`).join('');
+
+document.getElementById('techGrid').innerHTML=TECH.map((t,i)=>`
+ <div class="item reveal" data-d="${i+1}"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${t.ic}</svg></div><p>${t.t}</p></div>`).join('');
+
+/* ---------- NAV ---------- */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+const burger=document.getElementById('burger'),links=document.getElementById('navLinks');
+burger.addEventListener('click',()=>{burger.classList.toggle('x');links.classList.toggle('open')});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('x');links.classList.remove('open')}));
+
+/* ---------- FAQ ---------- */
+document.querySelectorAll('.faq').forEach(f=>{
+  const q=f.querySelector('.faq__q'),a=f.querySelector('.faq__a');
+  q.addEventListener('click',()=>{
+    const open=f.classList.contains('open');
+    document.querySelectorAll('.faq').forEach(o=>{o.classList.remove('open');o.querySelector('.faq__a').style.maxHeight=null});
+    if(!open){f.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
+  });
+});
+
+/* ---------- REVEAL ---------- */
+const io=new IntersectionObserver((ents)=>{ents.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- SCROLL-SCRUB ENGINE (hero bg + teeth) ---------- */
+function makeScrubber(video){
+  let ready=false,dur=0;
+  const setReady=()=>{if(video.duration&&!isNaN(video.duration)){ready=true;dur=video.duration;try{video.pause();}catch(e){}}};
+  video.addEventListener('loadedmetadata',setReady);
+  video.addEventListener('canplay',setReady);
+  if(video.readyState>=1)setReady();
+  return {
+    update(prog){
+      if(!ready)return;
+      const t=Math.min(dur-0.02,Math.max(0,prog*dur));
+      if(Math.abs(t-video.currentTime)>0.02){try{video.currentTime=t;}catch(e){}}
+    }
+  };
+}
+const prefersReduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const heroEl=document.getElementById('hero');
+const heroVid=document.getElementById('heroVideo');
+const heroContent=document.getElementById('heroContent');
+const scrollHint=document.getElementById('scrollHint');
+const heroScrub=heroVid?makeScrubber(heroVid):null;
+
+const teethEl=document.getElementById('teeth');
+const teethVid=document.getElementById('teethVideo');
+const teethScrub=teethVid?makeScrubber(teethVid):null;
+
+let rafPending=false;
+function onScroll(){
+  if(rafPending)return;rafPending=true;
+  requestAnimationFrame(()=>{
+    rafPending=false;
+    const vh=innerHeight;
+    if(heroEl&&heroScrub){
+      const r=heroEl.getBoundingClientRect();
+      const track=r.height-vh;
+      const prog=Math.min(1,Math.max(0,-r.top/(track||1)));
+      heroScrub.update(prog);
+      if(heroContent){
+        const fade=Math.min(1,Math.max(0,(prog-0.15)/0.5));
+        heroContent.style.opacity=(1-fade).toFixed(3);
+        heroContent.style.transform='translateY('+(fade*-40).toFixed(1)+'px)';
+        if(scrollHint)scrollHint.style.opacity=(1-Math.min(1,prog*4)).toFixed(3);
+      }
+    }
+    if(teethEl&&teethScrub){
+      const r=teethEl.getBoundingClientRect();
+      const start=vh,end=-r.height;
+      const prog=Math.min(1,Math.max(0,(start-r.top)/(start-end||1)));
+      teethScrub.update(prog);
+    }
+  });
+}
+if(!prefersReduced){
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',onScroll,{passive:true});
+  onScroll();
+}
+
+/* ---------- 3D RESULTS SLIDER ---------- */
+const stage=document.getElementById('stage'),dotsWrap=document.getElementById('dots');
+let cur=0;const N=RESULTS.length;
+RESULTS.forEach((src,i)=>{
+  const s=document.createElement('div');s.className='slide';
+  s.innerHTML=`<img src="${src}" alt="نمونه کار میراث ${i+1}" loading="lazy">`;
+  s.addEventListener('click',()=>go(i));
+  stage.appendChild(s);
+  const d=document.createElement('button');d.setAttribute('aria-label','اسلاید '+(i+1));d.addEventListener('click',()=>go(i));dotsWrap.appendChild(d);
+});
+const slides=[...stage.children],dots=[...dotsWrap.children];
+function layout(){
+  const mob=window.innerWidth<768;
+  slides.forEach((s,i)=>{
+    let off=i-cur;
+    if(off>N/2)off-=N; if(off<-N/2)off+=N;
+    const abs=Math.abs(off);
+    const tz=-abs*180;
+    const ry=off*-26;
+    const sc=Math.max(.62,1-abs*.16);
+    s.style.transform=`translate(-50%,-50%) translateX(${off*(mob?70:62)}%) translateZ(${tz}px) rotateY(${ry}deg) scale(${sc})`;
+    s.style.opacity=abs>2.4?0:1-abs*.18;
+    s.style.zIndex=100-abs;
+    s.style.pointerEvents=abs>2.4?'none':'auto';
+    s.classList.toggle('active',off===0);
+  });
+  dots.forEach((d,i)=>d.classList.toggle('on',i===cur));
+}
+function go(i){cur=(i%N+N)%N;layout();}
+function next(){go(cur+1);}function prev(){go(cur-1);}
+document.getElementById('next').addEventListener('click',next);
+document.getElementById('prev').addEventListener('click',prev);
+addEventListener('resize',layout);
+layout();
+let auto=setInterval(next,4200);
+const slider=document.getElementById('slider');
+slider.addEventListener('mouseenter',()=>clearInterval(auto));
+slider.addEventListener('mouseleave',()=>auto=setInterval(next,4200));
+let sx=0,drag=false;
+slider.addEventListener('pointerdown',e=>{drag=true;sx=e.clientX;clearInterval(auto);});
+addEventListener('pointerup',e=>{if(!drag)return;drag=false;const dx=e.clientX-sx;if(Math.abs(dx)>50){dx>0?prev():next();}auto=setInterval(next,4200);});
+addEventListener('keydown',e=>{if(e.key==='ArrowLeft')next();if(e.key==='ArrowRight')prev();});
+</script>
+</body>
+</html>
