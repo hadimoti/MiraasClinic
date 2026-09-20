@@ -9,7 +9,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script defer src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
   <style>
     :root {
       --background: #ffffff;
@@ -100,20 +99,22 @@
     .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
     .chip { background: var(--surface); border: 1px solid var(--stroke); border-radius: 999px; color: var(--primary-deep); padding: 6px 14px; font-size: .82rem; font-weight: 600; }
 
-    /* Hero Art */
-    .hero-art { position: relative; min-height: 420px; border-radius: 36px; overflow: hidden; background: radial-gradient(circle at 60% 40%, #ffffff 0%, #faf8fc 50%, #eee9f5 100%); border: 1px solid var(--stroke); box-shadow: var(--shadow); }
-    .hero-art::after { content: ''; position: absolute; inset: 16px; border: 1px solid rgba(91,58,117,.10); border-radius: 28px; pointer-events: none; }
-    .hero-logo-box { position: absolute; top: 24px; right: 24px; z-index: 3; display: flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary) 100%); color: #ffffff; padding: 8px 16px; border-radius: 999px; box-shadow: 0 8px 24px rgba(56,32,71,.25); border: 1px solid rgba(255,255,255,.2); }
-    .hero-logo-img { width: 32px; height: 32px; object-fit: contain; }
-    .hero-logo-text { font-size: .82rem; font-weight: 700; color: #ffffff; letter-spacing: .06em; }
-    .smile-svg { position: absolute; inset: 70px 30px 45px; width: calc(100% - 60px); height: calc(100% - 115px); overflow: visible; }
-    .smile-path { fill: none; stroke: var(--primary); stroke-width: 2.8; stroke-linecap: round; stroke-dasharray: 1000; stroke-dashoffset: 1000; }
-    .guide { fill: none; stroke: var(--primary-soft); stroke-width: 1.3; stroke-dasharray: 4 8; opacity: .45; }
-    .node { fill: var(--primary); opacity: 0; }
-    .node-ring { fill: none; stroke: var(--primary-soft); stroke-width: 1.2; opacity: 0; }
-    .tooth-line { fill: #ffffff; stroke: var(--primary-soft); stroke-width: 1.2; opacity: 0; }
-    .art-caption { position: absolute; left: 30px; bottom: 28px; display: flex; align-items: center; gap: 10px; color: var(--primary-deep); font-size: .8rem; font-weight: 600; background: rgba(255,255,255,.9); padding: 6px 14px; border-radius: 999px; border: 1px solid var(--stroke); }
-    .art-caption i { width: 8px; height: 8px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 0 5px rgba(91,58,117,.16); }
+    /* Hero before / after reveal — static equivalent of Reveal2 for this HTML site */
+    .hero-art { position: relative; min-height: 420px; border-radius: 36px; overflow: hidden; background: #eee9f5; border: 1px solid var(--stroke); box-shadow: var(--shadow); }
+    .hero-art::after { content: ''; position: absolute; inset: 16px; border: 1px solid rgba(91,58,117,.12); border-radius: 28px; pointer-events: none; z-index: 4; }
+    .hero-compare { position: absolute; inset: 0; overflow: hidden; cursor: ew-resize; touch-action: none; user-select: none; }
+    .hero-compare img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; pointer-events: none; }
+    .hero-compare-after { position: absolute; inset: 0; }
+    .hero-compare-before { position: absolute; inset: 0; z-index: 2; clip-path: inset(0 50% 0 0); }
+    .hero-compare-shade { position: absolute; inset: 0; z-index: 1; background: linear-gradient(135deg, rgba(56,32,71,.12), transparent 46%, rgba(56,32,71,.18)); pointer-events: none; }
+    .hero-compare-divider { position: absolute; z-index: 3; top: 0; bottom: 0; left: 50%; width: 3px; background: #fff; box-shadow: 0 0 0 1px rgba(56,32,71,.15), 0 0 22px rgba(36,26,44,.28); transform: translateX(-50%); pointer-events: none; }
+    .hero-compare-handle { position: absolute; top: 50%; left: 50%; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: #fff; border: 3px solid var(--primary); color: var(--primary); box-shadow: 0 8px 24px rgba(36,26,44,.22); transform: translate(-50%, -50%); font-size: 1.3rem; font-weight: 800; }
+    .hero-compare-label { position: absolute; z-index: 4; top: 28px; padding: 6px 12px; border-radius: 999px; background: rgba(36,26,44,.76); color: #fff; font-size: .74rem; font-weight: 700; letter-spacing: .02em; backdrop-filter: blur(8px); pointer-events: none; }
+    .hero-compare-label.before { left: 30px; }
+    .hero-compare-label.after { right: 30px; }
+    .hero-compare-copy { position: absolute; right: 28px; bottom: 28px; left: 28px; z-index: 4; display: flex; align-items: center; justify-content: space-between; gap: 14px; color: #fff; }
+    .hero-compare-copy strong { font-size: .92rem; text-shadow: 0 2px 12px rgba(36,26,44,.55); }
+    .hero-compare-copy span { color: rgba(255,255,255,.9); font-size: .7rem; }
 
     /* Services */
     .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
@@ -127,6 +128,29 @@
 
     /* Results */
     .result-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    /* Halo-reel inspired portfolio carousel */
+    .portfolio-reel { position: relative; min-height: 470px; overflow: hidden; border-radius: 28px; background: radial-gradient(circle at 50% 50%, #fff 0%, #faf8fc 50%, #eee9f5 100%); border: 1px solid var(--stroke); perspective: 1200px; touch-action: pan-y; }
+    .portfolio-reel::before { content: ''; position: absolute; left: 50%; top: 50%; width: min(680px, 88%); height: 260px; border: 1px solid rgba(91,58,117,.14); border-radius: 50%; transform: translate(-50%, -50%) rotate(-8deg); pointer-events: none; }
+    .reel-stage { position: absolute; inset: 0; }
+    .reel-card { position: absolute; top: 50%; left: 50%; width: min(245px, 40vw); height: 315px; padding: 0; margin: -157px 0 0 -122px; overflow: hidden; border: 1px solid var(--stroke); border-radius: 24px; background: var(--surface); box-shadow: 0 24px 60px rgba(56,32,71,.16); opacity: 0; pointer-events: none; transform: translate3d(0,0,0) scale(.45) rotateY(0); transition: transform .65s cubic-bezier(.2,.8,.2,1), opacity .45s ease, filter .45s ease; }
+    .reel-card[data-offset="0"] { opacity: 1; z-index: 5; pointer-events: auto; transform: translate3d(0,0,80px) scale(1) rotateY(0); }
+    .reel-card[data-offset="-1"], .reel-card[data-offset="1"] { opacity: .78; z-index: 4; pointer-events: auto; filter: saturate(.82); }
+    .reel-card[data-offset="-1"] { transform: translate3d(-230px, 38px, 0) scale(.78) rotateY(18deg); }
+    .reel-card[data-offset="1"] { transform: translate3d(230px, 38px, 0) scale(.78) rotateY(-18deg); }
+    .reel-card[data-offset="-2"], .reel-card[data-offset="2"] { opacity: .38; z-index: 2; transform: translate3d(var(--reel-x), 74px, -80px) scale(.58) rotateY(var(--reel-rotate)); }
+    .reel-card[data-offset="-2"] { --reel-x: -390px; --reel-rotate: 28deg; }
+    .reel-card[data-offset="2"] { --reel-x: 390px; --reel-rotate: -28deg; }
+    .reel-card figure { height: 100%; margin: 0; position: relative; }
+    .reel-card img { width: 100%; height: 100%; object-fit: cover; }
+    .reel-card figcaption { position: absolute; right: 12px; bottom: 12px; left: 12px; padding: 8px 10px; border-radius: 12px; background: rgba(255,255,255,.92); color: var(--primary-deep); font-size: .72rem; font-weight: 700; text-align: center; box-shadow: 0 6px 18px rgba(36,26,44,.1); }
+    .reel-control { position: absolute; z-index: 8; top: 50%; width: 42px; height: 42px; border: 1px solid var(--stroke); border-radius: 50%; background: rgba(255,255,255,.9); color: var(--primary); box-shadow: 0 8px 22px rgba(56,32,71,.12); transform: translateY(-50%); font-size: 1.2rem; }
+    .reel-control:hover, .reel-control:focus-visible { background: var(--primary); color: #fff; }
+    .reel-control.prev { right: 24px; }
+    .reel-control.next { left: 24px; }
+    .reel-caption { position: absolute; right: 0; bottom: 18px; left: 0; z-index: 7; display: flex; justify-content: center; color: var(--muted); font-size: .76rem; }
+    .reel-dots { position: absolute; right: 0; bottom: 48px; left: 0; z-index: 8; display: flex; justify-content: center; gap: 6px; direction: ltr; }
+    .reel-dot { width: 7px; height: 7px; border: 0; padding: 0; border-radius: 50%; background: #cfc4d8; transition: transform .25s ease, background .25s ease; }
+    .reel-dot.active { background: var(--primary); transform: scale(1.45); }
     .result-card { overflow: hidden; border-radius: var(--radius-md); background: var(--surface); border: 1px solid var(--stroke); transition: transform .3s ease, box-shadow .3s ease; }
     .result-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
     .result-card figure { margin: 0; aspect-ratio: 1 / 1.08; overflow: hidden; position: relative; background: var(--surface-tint); }
@@ -193,9 +217,12 @@
 
     /* Mobile Navigation */
     .bottom-nav { position: fixed; z-index: 30; right: 0; bottom: 0; left: 0; display: flex; justify-content: space-around; gap: 2px; padding: 8px 6px max(8px, env(safe-area-inset-bottom)); background: rgba(255,255,255,.95); border-top: 1px solid var(--stroke); backdrop-filter: blur(18px); }
-    .nav-item { min-width: 55px; min-height: 52px; border: 0; background: transparent; color: var(--muted); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 2px; border-radius: 14px; font-size: .65rem; font-weight: 600; transition: color .2s ease, background .2s ease, transform .2s ease; }
+    .nav-item { position: relative; min-width: 55px; min-height: 52px; border: 0; background: transparent; color: var(--muted); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 2px; border-radius: 14px; font-size: .65rem; font-weight: 600; transition: color .2s ease, background .2s ease, transform .2s ease; overflow: hidden; }
+    .nav-item::before { content: ''; position: absolute; inset: 4px; z-index: 0; border-radius: 12px; background: var(--surface-tint); opacity: 0; transform: scale(.72); transition: opacity .25s ease, transform .25s cubic-bezier(.2,.8,.2,1); }
+    .nav-item > * { position: relative; z-index: 1; }
     .nav-item svg { width: 22px; height: 22px; }
-    .nav-item.active { color: var(--primary); background: var(--surface-tint); font-weight: 700; }
+    .nav-item.active { color: var(--primary); font-weight: 700; }
+    .nav-item.active::before, .nav-item[data-checked="true"]::before { opacity: 1; transform: scale(1); }
     .nav-item:active { transform: scale(.94); }
 
     /* Sheets */
@@ -223,10 +250,10 @@
 
     [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
     [data-reveal].visible { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } [data-reveal] { opacity: 1; transform: none; } .smile-path { stroke-dashoffset: 0; } .node, .node-ring, .tooth-line { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } [data-reveal] { opacity: 1; transform: none; } }
     @media (min-width: 800px) { body { padding-bottom: 0; } .bottom-nav { display: none; } .sheet { right: 50%; bottom: 50%; left: auto; width: min(580px, calc(100% - 32px)); max-height: 90dvh; border-radius: 24px; transform: translate(50%, 45%); } .sheet-layer.open .sheet { transform: translate(50%, 50%); } }
     @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 799px) { .desktop-nav, .topbar .btn { display: none; } .topbar-inner { min-height: 64px; } .hero { padding-top: 24px; min-height: 0; } .hero-grid { grid-template-columns: 1fr; gap: 32px; } .hero-copy h1 { font-size: clamp(2.1rem, 9vw, 3.2rem); } .hero-art { min-height: 320px; order: -1; } .smile-svg { inset: 55px 20px 25px; width: calc(100% - 40px); height: calc(100% - 80px); } .section { padding: 56px 0; } .section-head { display: block; } .section-head p { margin-top: 10px; } .service-grid { grid-template-columns: 1fr; } .service-card { min-height: 0; } .result-strip { grid-template-columns: repeat(2, 1fr); gap: 12px; } .method { grid-template-columns: 1fr; gap: 30px; } .method-visual { min-height: 250px; } .cta, .footer-top, .footer-info, .footer-bottom { display: block; } .cta .btn { margin-top: 18px; } .footer-slogan { margin-top: 10px; } }
+    @media (max-width: 799px) { .desktop-nav, .topbar .btn { display: none; } .topbar-inner { min-height: 64px; } .hero { padding-top: 24px; min-height: 0; } .hero-grid { grid-template-columns: 1fr; gap: 32px; } .hero-copy h1 { font-size: clamp(2.1rem, 9vw, 3.2rem); } .hero-art { min-height: 320px; order: -1; } .hero-compare-label { top: 20px; } .hero-compare-label.before { left: 22px; } .hero-compare-label.after { right: 22px; } .hero-compare-copy { right: 22px; bottom: 22px; left: 22px; } .hero-compare-copy span { display: none; } .section { padding: 56px 0; } .section-head { display: block; } .section-head p { margin-top: 10px; } .service-grid { grid-template-columns: 1fr; } .service-card { min-height: 0; } .result-strip { grid-template-columns: repeat(2, 1fr); gap: 12px; } .portfolio-reel { min-height: 410px; } .reel-card { width: min(210px, 58vw); height: 278px; margin: -139px 0 0 -105px; } .reel-card[data-offset="-1"] { transform: translate3d(-150px, 30px, 0) scale(.7) rotateY(17deg); } .reel-card[data-offset="1"] { transform: translate3d(150px, 30px, 0) scale(.7) rotateY(-17deg); } .reel-card[data-offset="-2"] { --reel-x: -245px; } .reel-card[data-offset="2"] { --reel-x: 245px; } .reel-control.prev { right: 10px; } .reel-control.next { left: 10px; } .method { grid-template-columns: 1fr; gap: 30px; } .method-visual { min-height: 250px; } .cta, .footer-top, .footer-info, .footer-bottom { display: block; } .cta .btn { margin-top: 18px; } .footer-slogan { margin-top: 10px; } }
     @media (max-width: 390px) { .wrap { width: min(100% - 24px, 1140px); } .hero-actions .btn { width: 100%; } .form-grid { grid-template-columns: 1fr; } .field.full { grid-column: auto; } }
   </style>
 </head>
@@ -271,27 +298,16 @@
             <span class="chip">آنالیز دیجیتال چهره</span>
           </div>
         </div>
-        <div class="hero-art" aria-label="تصویرسازی مسیر طراحی لبخند شما" data-reveal>
-          <div class="hero-logo-box">
-            <img class="hero-logo-img" src="logo/logo.png" alt="MIRAAS" loading="eager">
-            <span class="hero-logo-text">MIRAAS CLINIC</span>
+        <div class="hero-art" aria-label="مقایسه تصویری قبل و بعد طراحی لبخند" data-reveal>
+          <div class="hero-compare" id="hero-compare" role="slider" tabindex="0" aria-label="مقایسه قبل و بعد لبخند" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+            <div class="hero-compare-after"><img src="assets/generated/smile-after.png" alt="نمونه تصویری بعد از طراحی لبخند" loading="eager"></div>
+            <div class="hero-compare-before"><img src="assets/generated/smile-before.png" alt="نمونه تصویری قبل از طراحی لبخند" loading="eager"></div>
+            <div class="hero-compare-shade" aria-hidden="true"></div>
+            <span class="hero-compare-label before">قبل</span>
+            <span class="hero-compare-label after">بعد</span>
+            <div class="hero-compare-divider" aria-hidden="true"><span class="hero-compare-handle">↔</span></div>
+            <div class="hero-compare-copy"><strong>طراحی اختصاصی لبخند شما</strong><span>نمونه تصویری تولیدشده · دستگیره را بکشید</span></div>
           </div>
-          <svg class="smile-svg" viewBox="0 0 520 300" role="img" aria-label="خط طراحی اختصاصی لبخند و نقاط متناسب">
-            <path class="guide" d="M65 100 C170 220 350 220 455 100"/>
-            <path class="guide" d="M100 125 C190 205 330 205 420 125"/>
-            <path class="smile-path" d="M65 100 C170 220 350 220 455 100"/>
-            <path class="tooth-line" d="M166 159c7-10 20-10 27 0v31c-8 7-19 7-27 0z"/>
-            <path class="tooth-line" d="M196 178c7-9 19-9 26 0v20c-7 6-18 6-26 0z"/>
-            <path class="tooth-line" d="M298 178c7-9 19-9 26 0v20c-7 6-18 6-26 0z"/>
-            <path class="tooth-line" d="M327 159c7-10 20-10 27 0v31c-8 7-19 7-27 0z"/>
-            <circle class="node-ring" cx="125" cy="150" r="9"/>
-            <circle class="node-ring" cx="260" cy="205" r="9"/>
-            <circle class="node-ring" cx="395" cy="150" r="9"/>
-            <circle class="node" cx="125" cy="150" r="3.5"/>
-            <circle class="node" cx="260" cy="205" r="3.5"/>
-            <circle class="node" cx="395" cy="150" r="3.5"/>
-          </svg>
-          <div class="art-caption"><i aria-hidden="true"></i><span>طراحی اختصاصی برای لبخند شما</span></div>
         </div>
       </div>
     </section>
@@ -345,35 +361,21 @@
           </div>
           <p>نمونه‌های واقعی از تغییر و اصلاح طرح لبخند مراجعین کلینیک میراث با رویکرد حفظ بافت دندان و زیبایی طبیعی.</p>
         </div>
-        <div class="result-strip">
-          <article class="result-card" data-reveal>
-            <figure>
-              <img src="results/photo_1_2026-05-27_19-06-46.jpg" alt="لبخند ساخته شده در کلینیک میراث ۱" loading="lazy">
-              <span class="result-label">نمونه‌کار ۰۱</span>
-            </figure>
-            <figcaption>هماهنگی فرم و تقارن خط لبخند</figcaption>
-          </article>
-          <article class="result-card" data-reveal>
-            <figure>
-              <img src="results/photo_2_2026-05-27_19-06-46.jpg" alt="لبخند ساخته شده در کلینیک میراث ۲" loading="lazy">
-              <span class="result-label">نمونه‌کار ۰۲</span>
-            </figure>
-            <figcaption>اصلاح ظریف فرم و رنگ دندان‌ها</figcaption>
-          </article>
-          <article class="result-card" data-reveal>
-            <figure>
-              <img src="results/photo_3_2026-05-27_19-06-46.jpg" alt="لبخند ساخته شده در کلینیک میراث ۳" loading="lazy">
-              <span class="result-label">نمونه‌کار ۰۳</span>
-            </figure>
-            <figcaption>طراحی اختصاصی متناسب با فرم چهره</figcaption>
-          </article>
-          <article class="result-card" data-reveal>
-            <figure>
-              <img src="results/photo_4_2026-05-27_19-06-46.jpg" alt="لبخند ساخته شده در کلینیک میراث ۴" loading="lazy">
-              <span class="result-label">نمونه‌کار ۰۴</span>
-            </figure>
-            <figcaption>ترکیب طبیعی رنگ و انعکاس نور</figcaption>
-          </article>
+        <div class="portfolio-reel" id="portfolio-reel" role="region" aria-roledescription="carousel" aria-label="نمونه‌کارهای طراحی لبخند" tabindex="0">
+          <div class="reel-stage">
+            <article class="reel-card" data-reel-card data-index="0"><figure><img src="results/photo_1_2026-05-27_19-06-46.jpg" alt="نمونه‌کار طراحی لبخند ۱" loading="lazy"><figcaption>هماهنگی فرم و تقارن خط لبخند</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="1"><figure><img src="results/photo_2_2026-05-27_19-06-46.jpg" alt="نمونه‌کار طراحی لبخند ۲" loading="lazy"><figcaption>اصلاح ظریف فرم و رنگ دندان‌ها</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="2"><figure><img src="results/photo_3_2026-05-27_19-06-46.jpg" alt="نمونه‌کار طراحی لبخند ۳" loading="lazy"><figcaption>طراحی متناسب با فرم چهره</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="3"><figure><img src="results/photo_4_2026-05-27_19-06-46.jpg" alt="نمونه‌کار طراحی لبخند ۴" loading="lazy"><figcaption>ترکیب طبیعی رنگ و نور</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="4"><figure><img src="results/photo_5_2026-05-27_19-06-46.jpg" alt="نمونه‌کار طراحی لبخند ۵" loading="lazy"><figcaption>لبخند طبیعی و متعادل</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="5"><figure><img src="results/photo_6_2026-05-27_19-06-46.jpg" alt="نمونه‌کار طراحی لبخند ۶" loading="lazy"><figcaption>فرم‌دهی ظریف دندان‌ها</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="6"><figure><img src="results/photo_7_2026-05-27_19-06-46.jpg" alt="نمونه‌کار طراحی لبخند ۷" loading="lazy"><figcaption>هماهنگی رنگ و فرم</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="7"><figure><img src="results/photo_8_2026-05-27_19-06-46.jpg" alt="نمونه‌کار طراحی لبخند ۸" loading="lazy"><figcaption>طراحی لبخند اختصاصی</figcaption></figure></article>
+          </div>
+          <button class="reel-control prev" type="button" aria-label="نمونه قبلی">›</button>
+          <button class="reel-control next" type="button" aria-label="نمونه بعدی">‹</button>
+          <div class="reel-dots" aria-label="انتخاب نمونه‌کار"></div>
+          <div class="reel-caption">برای جابه‌جایی، روی کارت‌ها بکشید یا از فلش‌ها استفاده کنید</div>
         </div>
         <div class="center-action">
           <button class="btn btn-quiet" data-open-sheet="gallery">مشاهدهٔ سایر نمونه‌کارها</button>
@@ -716,62 +718,110 @@
         }, 900);
       });
 
-      // Anime.js Hero animation
-      const path = qs('.smile-path');
-      const designElements = qsa('.node, .node-ring, .tooth-line');
-      if (!reduce && window.anime) {
-        // Hero copy staggered entrance
-        anime({
-          targets: '.hero-copy > *',
-          opacity: [0, 1],
-          translateY: [24, 0],
-          delay: anime.stagger(90, { start: 150 }),
-          duration: 750,
-          easing: 'easeOutQuart'
+      // Hero before/after reveal: pointer, touch and keyboard controls.
+      const compare = qs('#hero-compare');
+      if (compare) {
+        const before = qs('.hero-compare-before', compare);
+        const divider = qs('.hero-compare-divider', compare);
+        let position = 50;
+        let dragging = false;
+        const setPosition = value => {
+          position = Math.max(0, Math.min(100, value));
+          before.style.clipPath = `inset(0 ${100 - position}% 0 0)`;
+          divider.style.left = `${position}%`;
+          compare.setAttribute('aria-valuenow', String(Math.round(position)));
+        };
+        const moveFromPoint = (clientX) => {
+          const rect = compare.getBoundingClientRect();
+          setPosition(((clientX - rect.left) / rect.width) * 100);
+        };
+        compare.addEventListener('pointerdown', event => {
+          dragging = true;
+          compare.setPointerCapture?.(event.pointerId);
+          moveFromPoint(event.clientX);
         });
-
-        if (path) {
-          const timeline = anime.timeline({ easing: 'easeOutCubic' });
-          timeline
-            .add({
-              targets: path,
-              strokeDashoffset: [1000, 0],
-              duration: 1100
-            })
-            .add({
-              targets: '.node-ring',
-              opacity: [0, .8],
-              scale: [0, 1],
-              duration: 400,
-              delay: anime.stagger(120)
-            }, '-=350')
-            .add({
-              targets: '.node',
-              opacity: [0, 1],
-              scale: [0, 1],
-              duration: 320,
-              delay: anime.stagger(120)
-            }, '-=360')
-            .add({
-              targets: '.tooth-line',
-              opacity: [0, 1],
-              translateY: [10, 0],
-              duration: 520,
-              delay: anime.stagger(90)
-            }, '-=320')
-            .add({
-              targets: '.hero-art',
-              boxShadow: [
-                '0 20px 60px rgba(56, 32, 71, .09)',
-                '0 24px 70px rgba(56, 32, 71, .16)'
-              ],
-              duration: 600
-            }, '-=200');
-        }
-      } else {
-        if (path) path.style.strokeDashoffset = 0;
-        designElements.forEach(el => el.style.opacity = 1);
+        compare.addEventListener('pointermove', event => { if (dragging) moveFromPoint(event.clientX); });
+        compare.addEventListener('pointerup', () => { dragging = false; });
+        compare.addEventListener('pointercancel', () => { dragging = false; });
+        compare.addEventListener('keydown', event => {
+          if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            event.preventDefault();
+            setPosition(position + (event.key === 'ArrowRight' ? 5 : -5));
+          }
+          if (event.key === 'Home') { event.preventDefault(); setPosition(0); }
+          if (event.key === 'End') { event.preventDefault(); setPosition(100); }
+        });
+        setPosition(position);
       }
+
+      // Portfolio reel: autoplay, drag, keyboard and button navigation.
+      const reel = qs('#portfolio-reel');
+      if (reel) {
+        const cards = qsa('[data-reel-card]', reel);
+        const dots = qs('.reel-dots', reel);
+        const total = cards.length;
+        let active = 0;
+        let startX = null;
+        let autoplay;
+        cards.forEach((_, index) => {
+          const dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'reel-dot';
+          dot.setAttribute('aria-label', `نمایش نمونه‌کار ${index + 1}`);
+          dot.addEventListener('click', () => { active = index; render(); restart(); });
+          dots.appendChild(dot);
+        });
+        const offsetFor = (index) => {
+          let offset = index - active;
+          if (offset > total / 2) offset -= total;
+          if (offset < -total / 2) offset += total;
+          return offset;
+        };
+        const render = () => {
+          cards.forEach((card, index) => card.dataset.offset = String(offsetFor(index)));
+          qsa('.reel-dot', reel).forEach((dot, index) => dot.classList.toggle('active', index === active));
+          reel.setAttribute('aria-label', `نمونه‌کارهای طراحی لبخند؛ مورد ${active + 1} از ${total}`);
+        };
+        const step = direction => { active = (active + direction + total) % total; render(); };
+        const restart = () => {
+          window.clearInterval(autoplay);
+          if (!reduce) autoplay = window.setInterval(() => step(1), 5200);
+        };
+        qs('.reel-control.prev', reel).addEventListener('click', () => { step(-1); restart(); });
+        qs('.reel-control.next', reel).addEventListener('click', () => { step(1); restart(); });
+        reel.addEventListener('pointerdown', event => { startX = event.clientX; reel.setPointerCapture?.(event.pointerId); });
+        reel.addEventListener('pointerup', event => {
+          if (startX === null) return;
+          const delta = event.clientX - startX;
+          if (Math.abs(delta) > 35) step(delta < 0 ? 1 : -1);
+          startX = null;
+          restart();
+        });
+        reel.addEventListener('pointercancel', () => { startX = null; });
+        reel.addEventListener('keydown', event => {
+          if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            event.preventDefault();
+            step(event.key === 'ArrowLeft' ? 1 : -1);
+            restart();
+          }
+        });
+        reel.addEventListener('mouseenter', () => window.clearInterval(autoplay));
+        reel.addEventListener('mouseleave', restart);
+        render();
+        restart();
+      }
+
+      // AnimatedBackground-style state for the fixed mobile navigation.
+      qsa('[data-nav]').forEach(item => {
+        item.addEventListener('click', () => {
+          qsa('[data-nav]').forEach(nav => {
+            const selected = nav === item;
+            nav.classList.toggle('active', selected);
+            nav.dataset.checked = String(selected);
+            nav.setAttribute('aria-current', selected ? 'page' : 'false');
+          });
+        });
+      });
     })();
   </script>
 </body>
