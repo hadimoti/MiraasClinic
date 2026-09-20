@@ -1,0 +1,147 @@
+/**
+*
+*	Name:			Doran Fonts
+*	Version:			2.5
+*	Author:			Fereshte Iranshahi, Reza Bakhtiarifard & Ehsan (Daniel) Roudi
+*	Created on:		August 2025
+*	Updated on:		August 2025
+*	Vendor:			http://fontiran.com
+*	Copyright:		Commercial/Proprietary Software
+--------------------------------------------------------------------------------------
+فونت دوران یک نرم افزار مالکیتی محسوب می شود. جهت آگاهی از قوانین استفاده از این فونت ها لطفا به وب سایت (فونت ایران دات کام) مراجعه نمایید
+--------------------------------------------------------------------------------------
+Doran fonts are considered a proprietary software. To gain information about the laws regarding the use of these fonts, please visit www.fontiran.com 
+--------------------------------------------------------------------------------------
+This set of fonts are used in this project under the license: (.....)
+------------------------------------------------------------------------------------- fonts/-
+*	
+**/
+
+
+@font-face {
+	font-family: Doran;
+	font-style: normal;
+	font-weight: 100;
+	src: url('woff/Doran-Thin.woff') format('woff'),   
+	url('woff2/Doran-Thin.woff2') format('woff2');		
+}
+
+@font-face {
+	font-family: Doran;
+	font-style: normal;
+	font-weight: 300;
+	src: url('woff/Doran-Light.woff') format('woff'),   
+	url('woff2/Doran-Light.woff2') format('woff2');	
+}
+
+@font-face {
+	font-family: Doran;
+	font-style: normal;
+	font-weight: normal;
+	src: url('woff/Doran-Regular.woff') format('woff'),   
+	url('woff2/Doran-Regular.woff2') format('woff2');		 
+}
+
+@font-face {
+	font-family: Doran;
+	font-style: normal;
+	font-weight: 500;
+	src: url('woff/Doran-Medium.woff') format('woff'),   
+	url('woff2/Doran-Medium.woff2') format('woff2');		 
+}
+
+@font-face {
+	font-family: Doran;
+	font-style: normal;
+	font-weight: bold;
+	src: url('woff/Doran-Bold.woff') format('woff'),   
+	url('woff2/Doran-Bold.woff2') format('woff2');		 
+}
+
+@font-face {
+	font-family: Doran;
+	font-style: normal;
+	font-weight: 800;
+	src: url('woff/Doran-ExtraBold.woff') format('woff'),   
+	url('woff2/Doran-ExtraBold.woff2') format('woff2');	 
+}
+
+@font-face {
+	font-family: Doran;
+	font-style: normal;
+	font-weight: 800;
+	src: url('woff/Doran-Black.woff') format('woff'),   
+	url('woff2/Doran-Black.woff2') format('woff2');	 
+}
+
+@font-face {
+	font-family: Doran;
+	font-style: normal;
+	font-weight: 800;
+	src: url('woff/Doran-ExtraBlack.woff') format('woff'),   
+	url('woff2/Doran-ExtraBlack.woff2') format('woff2');	 
+}
+
+@font-face {
+	font-family: Doran Classic Dots;
+	font-style: normal;
+	font-weight: 100;
+	src: url('woff/DoranClassicDots-Thin.woff') format('woff'),   
+	url('woff2/DoranClassicDots-Thin.woff2') format('woff2');		
+}
+
+@font-face {
+	font-family: Doran Classic Dots;
+	font-style: normal;
+	font-weight: 300;
+	src: url('woff/DoranClassicDots-Light.woff') format('woff'),   
+	url('woff2/DoranClassicDots-Light.woff2') format('woff2');	
+}
+
+@font-face {
+	font-family: Doran Classic Dots;
+	font-style: normal;
+	font-weight: normal;
+	src: url('woff/DoranClassicDots-Regular.woff') format('woff'),   
+	url('woff2/DoranClassicDots-Regular.woff2') format('woff2');		 
+}
+
+@font-face {
+	font-family: Doran Classic Dots;
+	font-style: normal;
+	font-weight: 500;
+	src: url('woff/DoranClassicDots-Medium.woff') format('woff'),   
+	url('woff2/DoranClassicDots-Medium.woff2') format('woff2');		 
+}
+
+@font-face {
+	font-family: Doran Classic Dots;
+	font-style: normal;
+	font-weight: bold;
+	src: url('woff/DoranClassicDots-Bold.woff') format('woff'),   
+	url('woff2/DoranClassicDots-Bold.woff2') format('woff2');		 
+}
+
+@font-face {
+	font-family: Doran Classic Dots;
+	font-style: normal;
+	font-weight: 800;
+	src: url('woff/DoranClassicDots-ExtraBold.woff') format('woff'),   
+	url('woff2/DoranClassicDots-ExtraBold.woff2') format('woff2');	 
+}
+
+@font-face {
+	font-family: Doran Classic Dots;
+	font-style: normal;
+	font-weight: 800;
+	src: url('woff/DoranClassicDots-Black.woff') format('woff'),   
+	url('woff2/DoranClassicDots-Black.woff2') format('woff2');	 
+}
+
+@font-face {
+	font-family: Doran Classic Dots;
+	font-style: normal;
+	font-weight: 800;
+	src: url('woff/DoranClassicDots-ExtraBlack.woff') format('woff'),   
+	url('woff2/DoranClassicDots-ExtraBlack.woff2') format('woff2');	 
+}

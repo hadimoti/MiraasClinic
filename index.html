@@ -6,9 +6,10 @@
   <meta name="theme-color" content="#5b3a75">
   <meta name="description" content="کلینیک دندان‌پزشکی زیبایی میراث در تهران؛ طراحی اختصاصی لبخند، لمینیت سرامیکی و کامپوزیت ونیر. وقتی میخندی، خیلی خوشگلتری!">
   <title>کلینیک دندان‌پزشکی زیبایی میراث | وقتی میخندی، خیلی خوشگلتری!</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/fonts/doran/fontiran.css">
+  <link rel="preload" href="assets/fonts/doran/woff2/Doran-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/doran/woff2/Doran-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/doran/woff2/Doran-Bold.woff2" as="font" type="font/woff2" crossorigin>
   <style>
     :root {
       --background: #ffffff;
@@ -31,10 +32,11 @@
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { margin: 0; background: var(--background); color: var(--ink); font-family: Estedad, Vazirmatn, Tahoma, sans-serif; line-height: 1.85; padding-bottom: var(--nav-space); }
+    body { margin: 0; background: var(--background); color: var(--ink); font-family: Doran, Vazirmatn, Tahoma, sans-serif; line-height: 1.85; padding-bottom: var(--nav-space); }
     body.sheet-open { overflow: hidden; }
     a { color: inherit; text-decoration: none; }
-    button, input, select, textarea { font: inherit; }
+    button, input, select, textarea { font-family: Doran, Vazirmatn, Tahoma, sans-serif; }
+    h1, h2, h3, h4, .brand-copy strong, .hero-slogan-highlight, .eyebrow { font-family: Doran, Vazirmatn, Tahoma, sans-serif; }
     button { cursor: pointer; }
     img { display: block; max-width: 100%; }
     .wrap { width: min(1140px, calc(100% - 36px)); margin-inline: auto; }
@@ -77,9 +79,9 @@
       background: #e5daf0;
     }
     .brand-logo { width: 100%; height: 100%; object-fit: contain; }
-    .brand-copy { display: grid; line-height: 1.25; }
-    .brand-copy strong { font-size: 1.15rem; letter-spacing: -.02em; }
-    .brand-copy small { color: var(--muted); font-size: .68rem; letter-spacing: .08em; direction: ltr; text-align: right; }
+    .brand-copy { display: grid; line-height: 1.3; }
+    .brand-copy strong { font-size: 1.18rem; letter-spacing: -.02em; color: var(--primary-deep); }
+    .brand-copy small { color: var(--muted); font-size: .78rem; font-weight: 500; }
     .desktop-nav { display: flex; align-items: center; gap: 26px; color: var(--muted); font-size: .92rem; font-weight: 500; }
     .desktop-nav a { transition: color .2s ease; }
     .desktop-nav a:hover { color: var(--primary); }
@@ -291,7 +293,7 @@
         <span class="brand-mark-box">
           <img src="logo/logo-dark.png" alt="لوگوی کلینیک میراث" class="brand-logo" width="56" height="56">
         </span>
-        <span class="brand-copy"><strong>کلینیک میراث</strong><small>MIRAAS DENTAL CLINIC</small></span>
+        <span class="brand-copy"><strong>کلینیک دندان‌پزشکی میراث</strong><small>مرکز تخصصی دندان‌پزشکی زیبایی</small></span>
       </a>
       <nav class="desktop-nav" aria-label="ناوبری اصلی">
         <a href="#services">خدمات</a>
@@ -309,7 +311,7 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div class="hero-copy" data-reveal>
-          <div class="hero-badge">AESTHETIC DENTISTRY · MIRAAS CLINIC</div>
+          <div class="hero-badge">مرکز تخصصی دندان‌پزشکی زیبایی</div>
           <h1>طراحی اختصاصی <span>لبخند شما</span></h1>
           <div class="hero-slogan-highlight">«وقتی میخندی، خیلی خوشگلتری!»</div>
           <p class="hero-desc">طراحی لبخند، لمینیت سرامیکی و کامپوزیت با ارزیابی دقیق چهره، سلامت دندان و فرم اختصاصی لبخند شما در محیطی آرام و استاندارد.</p>
@@ -336,7 +338,7 @@
             <span class="hero-compare-label before">قبل</span>
             <span class="hero-compare-label after">بعد</span>
             <div class="hero-compare-divider" aria-hidden="true"><span class="hero-compare-handle">↔</span></div>
-            <div class="hero-compare-copy"><strong>طراحی اختصاصی لبخند شما</strong><span>نمونه تصویری تولیدشده · دستگیره را بکشید</span></div>
+            <div class="hero-compare-copy" style="justify-content:center;"><span>برای مقایسه قبل و بعد، دستگیره را بکشید</span></div>
           </div>
         </div>
       </div>
@@ -347,7 +349,7 @@
       <div class="wrap">
         <div class="section-head" data-reveal>
           <div>
-            <div class="eyebrow">OUR SERVICES · خدمات تخصصی</div>
+            <div class="eyebrow">خدمات تخصصی دندان‌پزشکی</div>
             <h2>زیبایی لبخند، با انتخاب درست شروع می‌شود.</h2>
           </div>
           <p>هر درمان بعد از بررسی شرایط دندان، فک و گفت‌وگو دربارهٔ نتیجهٔ مطلوب و طبیعی شما برنامه‌ریزی می‌شود.</p>
@@ -373,7 +375,7 @@
             <div class="service-icon" aria-hidden="true">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12c3-6 13-6 16 0-3 6-13 6-16 0Z"/><circle cx="12" cy="12" r="3"/><path d="M3 5h4M17 5h4"/></svg>
             </div>
-            <h3>طراحی لبخند (Smile Design)</h3>
+            <h3>طراحی لبخند</h3>
             <p>آنالیز جامع فرم لب‌ها، خط لبخند و تقارن چهره برای خلق طبیعی‌ترین و برازنده‌ترین لبخند شما.</p>
             <a class="learn" href="#consult">مشاوره اختصاصی طرح لبخند ←</a>
           </article>
@@ -386,7 +388,7 @@
       <div class="wrap">
         <div class="section-head" data-reveal>
           <div>
-            <div class="eyebrow">PORTFOLIO · نتایج درمان</div>
+            <div class="eyebrow">نمونه‌کارها و نتایج درمان</div>
             <h2>لبخندهایی که ساخته‌ایم</h2>
           </div>
           <p>نمونه‌های واقعی از تغییر و اصلاح طرح لبخند مراجعین کلینیک میراث با رویکرد حفظ بافت دندان و زیبایی طبیعی.</p>
@@ -433,7 +435,7 @@
     <section class="section" id="method">
       <div class="wrap method">
         <div class="method-visual" data-reveal>
-          <div class="eyebrow" style="color:#d9c9e8">THE MIRAAS APPROACH</div>
+          <div class="eyebrow" style="color:#d9c9e8">رویکرد درمانی کلینیک میراث</div>
           <h3>زیبایی وقتی ماندگارتر است که با سلامت و شخصیت شما هماهنگ باشد.</h3>
           <div class="line" aria-hidden="true"></div>
         </div>
@@ -468,7 +470,7 @@
       <div class="wrap">
         <div class="section-head" data-reveal>
           <div>
-            <div class="eyebrow">VISIT & CONTACT · اطلاعات کلینیک</div>
+            <div class="eyebrow">اطلاعات تماس و آدرس کلینیک</div>
             <h2>آدرس و راه‌های ارتباطی با کلینیک میراث</h2>
           </div>
           <p>مشاورهٔ حضوری و آنلاین با تیم متخصص کلینیک زیبایی میراث در محیطی آرام و استاندارد.</p>
@@ -546,7 +548,7 @@
       <div class="wrap">
         <div class="section-head" data-reveal>
           <div>
-            <div class="eyebrow">FAQ · پرسش‌های شما</div>
+            <div class="eyebrow">پرسش‌های پرتکرار مراجعین</div>
             <h2>سؤالات متداول</h2>
           </div>
           <p>پاسخ‌های کوتاه و کاربردی به متداول‌ترین سؤالات درباره لمینیت، کامپوزیت و طراحی لبخند.</p>
@@ -652,7 +654,7 @@
             <label for="service">خدمت موردنظر</label>
             <select id="service" name="service" required>
               <option value="">انتخاب فرمایید</option>
-              <option>طراحی لبخند (Smile Design)</option>
+              <option>طراحی لبخند</option>
               <option>کامپوزیت ونیر</option>
               <option>لمینیت سرامیکی</option>
               <option>معاینه عمومی و مشاوره</option>
