@@ -59,7 +59,25 @@
     .topbar { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.92); border-bottom: 1px solid rgba(233,227,238,.85); backdrop-filter: blur(16px); }
     .topbar-inner { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
     .brand { display: inline-flex; align-items: center; gap: 14px; font-weight: 700; color: var(--primary-deep); }
-    .brand-logo { width: 46px; height: 46px; object-fit: contain; border-radius: 12px; }
+    .brand-mark-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--surface-tint);
+      border: 1px solid var(--stroke);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      box-shadow: 0 4px 12px rgba(56, 32, 71, .06);
+      flex-shrink: 0;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .brand:hover .brand-mark-box {
+      transform: scale(1.05);
+      background: #e5daf0;
+    }
+    .brand-logo { width: 100%; height: 100%; object-fit: contain; }
     .brand-copy { display: grid; line-height: 1.25; }
     .brand-copy strong { font-size: 1.1rem; letter-spacing: -.02em; }
     .brand-copy small { color: var(--muted); font-size: .68rem; letter-spacing: .08em; direction: ltr; text-align: right; }
@@ -85,9 +103,9 @@
     /* Hero Art */
     .hero-art { position: relative; min-height: 420px; border-radius: 36px; overflow: hidden; background: radial-gradient(circle at 60% 40%, #ffffff 0%, #faf8fc 50%, #eee9f5 100%); border: 1px solid var(--stroke); box-shadow: var(--shadow); }
     .hero-art::after { content: ''; position: absolute; inset: 16px; border: 1px solid rgba(91,58,117,.10); border-radius: 28px; pointer-events: none; }
-    .hero-logo-box { position: absolute; top: 28px; right: 28px; z-index: 3; display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,.88); padding: 8px 14px; border-radius: 999px; border: 1px solid var(--stroke); backdrop-filter: blur(8px); box-shadow: 0 8px 24px rgba(56,32,71,.06); }
+    .hero-logo-box { position: absolute; top: 24px; right: 24px; z-index: 3; display: flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary) 100%); color: #ffffff; padding: 8px 16px; border-radius: 999px; box-shadow: 0 8px 24px rgba(56,32,71,.25); border: 1px solid rgba(255,255,255,.2); }
     .hero-logo-img { width: 32px; height: 32px; object-fit: contain; }
-    .hero-logo-text { font-size: .78rem; font-weight: 700; color: var(--primary-deep); }
+    .hero-logo-text { font-size: .82rem; font-weight: 700; color: #ffffff; letter-spacing: .06em; }
     .smile-svg { position: absolute; inset: 70px 30px 45px; width: calc(100% - 60px); height: calc(100% - 115px); overflow: visible; }
     .smile-path { fill: none; stroke: var(--primary); stroke-width: 2.8; stroke-linecap: round; stroke-dasharray: 1000; stroke-dashoffset: 1000; }
     .guide { fill: none; stroke: var(--primary-soft); stroke-width: 1.3; stroke-dasharray: 4 8; opacity: .45; }
@@ -160,15 +178,18 @@
     .cta h2 { margin: 0 0 6px; font-size: 1.55rem; color: var(--primary-deep); }
     .cta p { color: var(--muted); margin: 0; font-size: .94rem; }
 
-    /* Footer */
-    footer { padding: 48px 0 32px; border-top: 1px solid var(--stroke); color: var(--muted); font-size: .84rem; background: #faf9fc; }
+    /* Footer (Luxury Dark Aesthetic for high contrast with white logo) */
+    footer { padding: 54px 0 36px; background: linear-gradient(145deg, #2a1538 0%, #160920 100%); color: rgba(255, 255, 255, .84); font-size: .86rem; border-top: 1px solid rgba(255, 255, 255, .08); }
     .footer-content { display: grid; gap: 24px; }
-    .footer-top { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; padding-bottom: 20px; border-bottom: 1px solid var(--stroke); }
-    .footer-brand { display: flex; align-items: center; gap: 12px; }
-    .footer-logo { width: 40px; height: 40px; object-fit: contain; }
-    .footer-slogan { font-weight: 700; color: var(--primary); font-size: 1.05rem; }
-    .footer-info { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; font-size: .86rem; }
-    .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: .78rem; padding-top: 16px; border-top: 1px solid var(--stroke); }
+    .footer-top { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; padding-bottom: 22px; border-bottom: 1px solid rgba(255, 255, 255, .12); }
+    .footer-brand { display: flex; align-items: center; gap: 14px; }
+    .footer-logo { width: 44px; height: 44px; object-fit: contain; }
+    .footer-brand strong { color: #ffffff !important; font-size: 1.15rem; display: block; }
+    .footer-brand small { color: rgba(255, 255, 255, .65) !important; font-size: .78rem; }
+    .footer-slogan { font-weight: 800; color: #d6b4fc !important; font-size: 1.1rem; background: rgba(255, 255, 255, .08); padding: 8px 18px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .15); }
+    .footer-info { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; color: rgba(255, 255, 255, .9); font-size: .9rem; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: .8rem; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, .1); color: rgba(255, 255, 255, .55); }
+    .footer-bottom a { color: #d6b4fc; font-weight: 600; }
 
     /* Mobile Navigation */
     .bottom-nav { position: fixed; z-index: 30; right: 0; bottom: 0; left: 0; display: flex; justify-content: space-around; gap: 2px; padding: 8px 6px max(8px, env(safe-area-inset-bottom)); background: rgba(255,255,255,.95); border-top: 1px solid var(--stroke); backdrop-filter: blur(18px); }
@@ -213,7 +234,9 @@
   <header class="topbar">
     <div class="wrap topbar-inner">
       <a class="brand" href="#home" aria-label="کلینیک میراث — صفحه اصلی">
-        <img src="logo/logo.png" alt="لوگوی کلینیک میراث" class="brand-logo" width="46" height="46">
+        <span class="brand-mark-box">
+          <img src="logo/logo-dark.png" alt="لوگوی کلینیک میراث" class="brand-logo" width="46" height="46">
+        </span>
         <span class="brand-copy"><strong>کلینیک میراث</strong><small>MIRAAS DENTAL CLINIC</small></span>
       </a>
       <nav class="desktop-nav" aria-label="ناوبری اصلی">
