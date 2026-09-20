@@ -56,19 +56,19 @@
 
     /* Header */
     .topbar { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.92); border-bottom: 1px solid rgba(233,227,238,.85); backdrop-filter: blur(16px); }
-    .topbar-inner { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .topbar-inner { min-height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
     .brand { display: inline-flex; align-items: center; gap: 14px; font-weight: 700; color: var(--primary-deep); }
     .brand-mark-box {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
       background: var(--surface-tint);
       border: 1px solid var(--stroke);
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 6px;
-      box-shadow: 0 4px 12px rgba(56, 32, 71, .06);
+      box-shadow: 0 4px 14px rgba(56, 32, 71, .07);
       flex-shrink: 0;
       transition: transform .2s ease, background .2s ease;
     }
@@ -78,7 +78,7 @@
     }
     .brand-logo { width: 100%; height: 100%; object-fit: contain; }
     .brand-copy { display: grid; line-height: 1.25; }
-    .brand-copy strong { font-size: 1.1rem; letter-spacing: -.02em; }
+    .brand-copy strong { font-size: 1.15rem; letter-spacing: -.02em; }
     .brand-copy small { color: var(--muted); font-size: .68rem; letter-spacing: .08em; direction: ltr; text-align: right; }
     .desktop-nav { display: flex; align-items: center; gap: 26px; color: var(--muted); font-size: .92rem; font-weight: 500; }
     .desktop-nav a { transition: color .2s ease; }
@@ -102,6 +102,33 @@
     /* Hero before / after reveal — static equivalent of Reveal2 for this HTML site */
     .hero-art { position: relative; min-height: 420px; border-radius: 36px; overflow: hidden; background: #eee9f5; border: 1px solid var(--stroke); box-shadow: var(--shadow); }
     .hero-art::after { content: ''; position: absolute; inset: 16px; border: 1px solid rgba(91,58,117,.12); border-radius: 28px; pointer-events: none; z-index: 4; }
+    .hero-logo-box {
+      position: absolute;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 6;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, .94);
+      border: 1px solid var(--stroke);
+      box-shadow: 0 10px 28px rgba(56, 32, 71, .16);
+      backdrop-filter: blur(12px);
+      transition: transform .25s ease;
+    }
+    .hero-logo-box:hover {
+      transform: translateX(-50%) scale(1.08);
+    }
+    .hero-logo-img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      display: block;
+    }
     .hero-compare { position: absolute; inset: 0; overflow: hidden; cursor: ew-resize; touch-action: none; user-select: none; }
     .hero-compare img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; pointer-events: none; }
     .hero-compare-after { position: absolute; inset: 0; }
@@ -148,8 +175,8 @@
     .reel-control.prev { right: 24px; }
     .reel-control.next { left: 24px; }
     .reel-caption { position: absolute; right: 0; bottom: 18px; left: 0; z-index: 7; display: flex; justify-content: center; color: var(--muted); font-size: .76rem; }
-    .reel-dots { position: absolute; right: 0; bottom: 48px; left: 0; z-index: 8; display: flex; justify-content: center; gap: 6px; direction: ltr; }
-    .reel-dot { width: 7px; height: 7px; border: 0; padding: 0; border-radius: 50%; background: #cfc4d8; transition: transform .25s ease, background .25s ease; }
+    .reel-dots { position: absolute; right: 0; bottom: 48px; left: 0; z-index: 8; display: flex; justify-content: center; align-items: center; gap: 5px; direction: ltr; padding: 0 16px; flex-wrap: wrap; max-width: 90%; margin: 0 auto; }
+    .reel-dot { width: 6px; height: 6px; border: 0; padding: 0; border-radius: 50%; background: #cfc4d8; transition: transform .25s ease, background .25s ease; cursor: pointer; }
     .reel-dot.active { background: var(--primary); transform: scale(1.45); }
     .result-card { overflow: hidden; border-radius: var(--radius-md); background: var(--surface); border: 1px solid var(--stroke); transition: transform .3s ease, box-shadow .3s ease; }
     .result-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
@@ -253,7 +280,7 @@
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } [data-reveal] { opacity: 1; transform: none; } }
     @media (min-width: 800px) { body { padding-bottom: 0; } .bottom-nav { display: none; } .sheet { right: 50%; bottom: 50%; left: auto; width: min(580px, calc(100% - 32px)); max-height: 90dvh; border-radius: 24px; transform: translate(50%, 45%); } .sheet-layer.open .sheet { transform: translate(50%, 50%); } }
     @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 799px) { .desktop-nav, .topbar .btn { display: none; } .topbar-inner { min-height: 64px; } .hero { padding-top: 24px; min-height: 0; } .hero-grid { grid-template-columns: 1fr; gap: 32px; } .hero-copy h1 { font-size: clamp(2.1rem, 9vw, 3.2rem); } .hero-art { min-height: 320px; order: -1; } .hero-compare-label { top: 20px; } .hero-compare-label.before { left: 22px; } .hero-compare-label.after { right: 22px; } .hero-compare-copy { right: 22px; bottom: 22px; left: 22px; } .hero-compare-copy span { display: none; } .section { padding: 56px 0; } .section-head { display: block; } .section-head p { margin-top: 10px; } .service-grid { grid-template-columns: 1fr; } .service-card { min-height: 0; } .result-strip { grid-template-columns: repeat(2, 1fr); gap: 12px; } .portfolio-reel { min-height: 410px; } .reel-card { width: min(210px, 58vw); height: 278px; margin: -139px 0 0 -105px; } .reel-card[data-offset="-1"] { transform: translate3d(-150px, 30px, 0) scale(.7) rotateY(17deg); } .reel-card[data-offset="1"] { transform: translate3d(150px, 30px, 0) scale(.7) rotateY(-17deg); } .reel-card[data-offset="-2"] { --reel-x: -245px; } .reel-card[data-offset="2"] { --reel-x: 245px; } .reel-control.prev { right: 10px; } .reel-control.next { left: 10px; } .method { grid-template-columns: 1fr; gap: 30px; } .method-visual { min-height: 250px; } .cta, .footer-top, .footer-info, .footer-bottom { display: block; } .cta .btn { margin-top: 18px; } .footer-slogan { margin-top: 10px; } }
+    @media (max-width: 799px) { .desktop-nav, .topbar .btn { display: none; } .topbar-inner { min-height: 72px; } .hero { padding-top: 24px; min-height: 0; } .hero-grid { grid-template-columns: 1fr; gap: 32px; } .hero-copy h1 { font-size: clamp(2.1rem, 9vw, 3.2rem); } .hero-art { min-height: 320px; order: -1; } .hero-logo-box { top: 16px; width: 48px; height: 48px; } .hero-logo-img { width: 34px; height: 34px; } .hero-compare-label { top: 20px; } .hero-compare-label.before { left: 22px; } .hero-compare-label.after { right: 22px; } .hero-compare-copy { right: 22px; bottom: 22px; left: 22px; } .hero-compare-copy span { display: none; } .section { padding: 56px 0; } .section-head { display: block; } .section-head p { margin-top: 10px; } .service-grid { grid-template-columns: 1fr; } .service-card { min-height: 0; } .result-strip { grid-template-columns: repeat(2, 1fr); gap: 12px; } .portfolio-reel { min-height: 410px; } .reel-card { width: min(210px, 58vw); height: 278px; margin: -139px 0 0 -105px; } .reel-card[data-offset="-1"] { transform: translate3d(-150px, 30px, 0) scale(.7) rotateY(17deg); } .reel-card[data-offset="1"] { transform: translate3d(150px, 30px, 0) scale(.7) rotateY(-17deg); } .reel-card[data-offset="-2"] { --reel-x: -245px; } .reel-card[data-offset="2"] { --reel-x: 245px; } .reel-control.prev { right: 10px; } .reel-control.next { left: 10px; } .method { grid-template-columns: 1fr; gap: 30px; } .method-visual { min-height: 250px; } .cta, .footer-top, .footer-info, .footer-bottom { display: block; } .cta .btn { margin-top: 18px; } .footer-slogan { margin-top: 10px; } }
     @media (max-width: 390px) { .wrap { width: min(100% - 24px, 1140px); } .hero-actions .btn { width: 100%; } .form-grid { grid-template-columns: 1fr; } .field.full { grid-column: auto; } }
   </style>
 </head>
@@ -262,7 +289,7 @@
     <div class="wrap topbar-inner">
       <a class="brand" href="#home" aria-label="کلینیک میراث — صفحه اصلی">
         <span class="brand-mark-box">
-          <img src="logo/logo-dark.png" alt="لوگوی کلینیک میراث" class="brand-logo" width="46" height="46">
+          <img src="logo/logo-dark.png" alt="لوگوی کلینیک میراث" class="brand-logo" width="56" height="56">
         </span>
         <span class="brand-copy"><strong>کلینیک میراث</strong><small>MIRAAS DENTAL CLINIC</small></span>
       </a>
@@ -299,6 +326,9 @@
           </div>
         </div>
         <div class="hero-art" aria-label="مقایسه تصویری قبل و بعد طراحی لبخند" data-reveal>
+          <div class="hero-logo-box" aria-label="لوگوی کلینیک میراث">
+            <img class="hero-logo-img" src="logo/logo-dark.png" alt="کلینیک میراث" loading="eager" width="42" height="42">
+          </div>
           <div class="hero-compare" id="hero-compare" role="slider" tabindex="0" aria-label="مقایسه قبل و بعد لبخند" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
             <div class="hero-compare-after"><img src="assets/generated/smile-after.png" alt="نمونه تصویری بعد از طراحی لبخند" loading="eager"></div>
             <div class="hero-compare-before"><img src="assets/generated/smile-before.png" alt="نمونه تصویری قبل از طراحی لبخند" loading="eager"></div>
@@ -363,14 +393,30 @@
         </div>
         <div class="portfolio-reel" id="portfolio-reel" role="region" aria-roledescription="carousel" aria-label="نمونه‌کارهای طراحی لبخند" tabindex="0">
           <div class="reel-stage">
-            <article class="reel-card" data-reel-card data-index="0"><figure><img src="results/photo_1_2026-05-27_19-06-46.jpg" alt="نمونه‌کار طراحی لبخند ۱" loading="lazy"><figcaption>هماهنگی فرم و تقارن خط لبخند</figcaption></figure></article>
-            <article class="reel-card" data-reel-card data-index="1"><figure><img src="results/photo_2_2026-05-27_19-06-46.jpg" alt="نمونه‌کار طراحی لبخند ۲" loading="lazy"><figcaption>اصلاح ظریف فرم و رنگ دندان‌ها</figcaption></figure></article>
-            <article class="reel-card" data-reel-card data-index="2"><figure><img src="results/photo_3_2026-05-27_19-06-46.jpg" alt="نمونه‌کار طراحی لبخند ۳" loading="lazy"><figcaption>طراحی متناسب با فرم چهره</figcaption></figure></article>
-            <article class="reel-card" data-reel-card data-index="3"><figure><img src="results/photo_4_2026-05-27_19-06-46.jpg" alt="نمونه‌کار طراحی لبخند ۴" loading="lazy"><figcaption>ترکیب طبیعی رنگ و نور</figcaption></figure></article>
-            <article class="reel-card" data-reel-card data-index="4"><figure><img src="results/photo_5_2026-05-27_19-06-46.jpg" alt="نمونه‌کار طراحی لبخند ۵" loading="lazy"><figcaption>لبخند طبیعی و متعادل</figcaption></figure></article>
-            <article class="reel-card" data-reel-card data-index="5"><figure><img src="results/photo_6_2026-05-27_19-06-46.jpg" alt="نمونه‌کار طراحی لبخند ۶" loading="lazy"><figcaption>فرم‌دهی ظریف دندان‌ها</figcaption></figure></article>
-            <article class="reel-card" data-reel-card data-index="6"><figure><img src="results/photo_7_2026-05-27_19-06-46.jpg" alt="نمونه‌کار طراحی لبخند ۷" loading="lazy"><figcaption>هماهنگی رنگ و فرم</figcaption></figure></article>
-            <article class="reel-card" data-reel-card data-index="7"><figure><img src="results/photo_8_2026-05-27_19-06-46.jpg" alt="نمونه‌کار طراحی لبخند ۸" loading="lazy"><figcaption>طراحی لبخند اختصاصی</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="0"><figure><img src="results/miraas_01.webp" alt="نمونه‌کار کلینیک میراث ۱" loading="lazy"><figcaption>هماهنگی فرم و تقارن خط لبخند</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="1"><figure><img src="results/miraas_02.webp" alt="نمونه‌کار کلینیک میراث ۲" loading="lazy"><figcaption>اصلاح ظریف فرم و رنگ دندان‌ها</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="2"><figure><img src="results/miraas_03.webp" alt="نمونه‌کار کلینیک میراث ۳" loading="lazy"><figcaption>طراحی متناسب با فرم چهره</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="3"><figure><img src="results/miraas_04.webp" alt="نمونه‌کار کلینیک میراث ۴" loading="lazy"><figcaption>ترکیب طبیعی رنگ و انعکاس نور</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="4"><figure><img src="results/miraas_05.webp" alt="نمونه‌کار کلینیک میراث ۵" loading="lazy"><figcaption>لبخند طبیعی و متعادل</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="5"><figure><img src="results/miraas_06.webp" alt="نمونه‌کار کلینیک میراث ۶" loading="lazy"><figcaption>فرم‌دهی ظریف و بستن فواصل</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="6"><figure><img src="results/miraas_07.webp" alt="نمونه‌کار کلینیک میراث ۷" loading="lazy"><figcaption>هماهنگی رنگ و تناسب قوس دندانی</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="7"><figure><img src="results/miraas_08.webp" alt="نمونه‌کار کلینیک میراث ۸" loading="lazy"><figcaption>طراحی لبخند اختصاصی مراجعین</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="8"><figure><img src="results/miraas_09.webp" alt="نمونه‌کار کلینیک میراث ۹" loading="lazy"><figcaption>لمینیت سرامیکی با ظرافت میکرونی</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="9"><figure><img src="results/miraas_10.webp" alt="نمونه‌کار کلینیک میراث ۱۰" loading="lazy"><figcaption>اصلاح کانتور و تقارن لثه</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="10"><figure><img src="results/miraas_11.webp" alt="نمونه‌کار کلینیک میراث ۱۱" loading="lazy"><figcaption>کامپوزیت لیرینگ با جلوه طبیعی</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="11"><figure><img src="results/miraas_12.webp" alt="نمونه‌کار کلینیک میراث ۱۲" loading="lazy"><figcaption>طراحی لبخند هالیوودی و نچرال</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="12"><figure><img src="results/miraas_13.webp" alt="نمونه‌کار کلینیک میراث ۱۳" loading="lazy"><figcaption>بازسازی خط لبخند با حفظ سلامت دندان</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="13"><figure><img src="results/miraas_14.webp" alt="نمونه‌کار کلینیک میراث ۱۴" loading="lazy"><figcaption>اصلاح بدشکلی و بهم‌ریختگی دندان</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="14"><figure><img src="results/miraas_15.webp" alt="نمونه‌کار کلینیک میراث ۱۵" loading="lazy"><figcaption>تطابق رنگ و درخشش فوق‌العاده</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="15"><figure><img src="results/miraas_16.webp" alt="نمونه‌کار کلینیک میراث ۱۶" loading="lazy"><figcaption>رویکرد استتیک و مینیمال دندانپزشکی</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="16"><figure><img src="results/miraas_17.webp" alt="نمونه‌کار کلینیک میراث ۱۷" loading="lazy"><figcaption>اصلاح چرخش و شیب دندان‌ها</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="17"><figure><img src="results/miraas_18.webp" alt="نمونه‌کار کلینیک میراث ۱۸" loading="lazy"><figcaption>بازگرداندن زیبایی و اعتمادبه‌نفس</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="18"><figure><img src="results/miraas_19.webp" alt="نمونه‌کار کلینیک میراث ۱۹" loading="lazy"><figcaption>طراحی لبخند متناسب با بیومکانیک لب</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="19"><figure><img src="results/miraas_20.webp" alt="نمونه‌کار کلینیک میراث ۲۰" loading="lazy"><figcaption>لمینیت سرامیکی با حداکثر شفافیت</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="20"><figure><img src="results/miraas_21.webp" alt="نمونه‌کار کلینیک میراث ۲۱" loading="lazy"><figcaption>اصلاح تناسب طول و عرض دندان‌ها</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="21"><figure><img src="results/miraas_22.webp" alt="نمونه‌کار کلینیک میراث ۲۲" loading="lazy"><figcaption>کامپوزیت ونیر زیبایی بدون تراش</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="22"><figure><img src="results/miraas_23.webp" alt="نمونه‌کار کلینیک میراث ۲۳" loading="lazy"><figcaption>هارمونی کامل خط لبخند با چهره</figcaption></figure></article>
+            <article class="reel-card" data-reel-card data-index="23"><figure><img src="results/miraas_24.webp" alt="نمونه‌کار کلینیک میراث ۲۴" loading="lazy"><figcaption>نمونه درمان کامل طراحی لبخند میراث</figcaption></figure></article>
           </div>
           <button class="reel-control prev" type="button" aria-label="نمونه قبلی">›</button>
           <button class="reel-control next" type="button" aria-label="نمونه بعدی">‹</button>
@@ -632,23 +678,43 @@
 
   <div class="sheet-layer" id="gallery-sheet" role="dialog" aria-modal="true" aria-labelledby="gallery-title">
     <div class="sheet-backdrop" data-close-sheet></div>
-    <section class="sheet">
+    <section class="sheet" style="max-height: 90dvh; display: flex; flex-direction: column;">
       <div class="sheet-handle" aria-hidden="true"></div>
       <div class="sheet-head">
         <div>
           <h2 id="gallery-title">لبخندهایی که ساخته‌ایم</h2>
-          <p>مجموعه نمونه‌کارهای طراحی لبخند، لمینیت و کامپوزیت کلینیک میراث.</p>
+          <p>مجموعه کامل ۲۴ نمونه‌کار واقعی از مراجعین کلینیک دندان‌پزشکی زیبایی میراث.</p>
         </div>
         <button class="icon-btn" type="button" data-close-sheet aria-label="بستن">×</button>
       </div>
-      <div class="result-strip" style="grid-template-columns:repeat(2, 1fr);margin-top:16px;">
-        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);"><img src="results/photo_5_2026-05-27_19-06-46.jpg" alt="نمونه کار ۵" style="width:100%;height:100%;object-fit:cover;"></figure>
-        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);"><img src="results/photo_6_2026-05-27_19-06-46.jpg" alt="نمونه کار ۶" style="width:100%;height:100%;object-fit:cover;"></figure>
-        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);"><img src="results/photo_7_2026-05-27_19-06-46.jpg" alt="نمونه کار ۷" style="width:100%;height:100%;object-fit:cover;"></figure>
-        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);"><img src="results/photo_8_2026-05-27_19-06-46.jpg" alt="نمونه کار ۸" style="width:100%;height:100%;object-fit:cover;"></figure>
+      <div class="result-strip" style="grid-template-columns:repeat(auto-fill, minmax(180px, 1fr));gap:14px;margin-top:16px;max-height:60dvh;overflow-y:auto;padding-inline-end:4px;">
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_01.webp" alt="نمونه کار کلینیک میراث ۱" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_02.webp" alt="نمونه کار کلینیک میراث ۲" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_03.webp" alt="نمونه کار کلینیک میراث ۳" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_04.webp" alt="نمونه کار کلینیک میراث ۴" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_05.webp" alt="نمونه کار کلینیک میراث ۵" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_06.webp" alt="نمونه کار کلینیک میراث ۶" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_07.webp" alt="نمونه کار کلینیک میراث ۷" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_08.webp" alt="نمونه کار کلینیک میراث ۸" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_09.webp" alt="نمونه کار کلینیک میراث ۹" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_10.webp" alt="نمونه کار کلینیک میراث ۱۰" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_11.webp" alt="نمونه کار کلینیک میراث ۱۱" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_12.webp" alt="نمونه کار کلینیک میراث ۱۲" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_13.webp" alt="نمونه کار کلینیک میراث ۱۳" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_14.webp" alt="نمونه کار کلینیک میراث ۱۴" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_15.webp" alt="نمونه کار کلینیک میراث ۱۵" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_16.webp" alt="نمونه کار کلینیک میراث ۱۶" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_17.webp" alt="نمونه کار کلینیک میراث ۱۷" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_18.webp" alt="نمونه کار کلینیک میراث ۱۸" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_19.webp" alt="نمونه کار کلینیک میراث ۱۹" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_20.webp" alt="نمونه کار کلینیک میراث ۲۰" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_21.webp" alt="نمونه کار کلینیک میراث ۲۱" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_22.webp" alt="نمونه کار کلینیک میراث ۲۲" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_23.webp" alt="نمونه کار کلینیک میراث ۲۳" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);position:relative;aspect-ratio:1/1.1;background:var(--surface-tint);"><img src="results/miraas_24.webp" alt="نمونه کار کلینیک میراث ۲۴" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></figure>
       </div>
       <div style="margin-top:20px;text-align:center;">
-        <button class="btn btn-primary" data-open-sheet="consultation">رزرو نوبت مشاوره</button>
+        <button class="btn btn-primary" data-open-sheet="consultation">رزرو نوبت مشاوره حضوری</button>
       </div>
     </section>
   </div>
