@@ -4,27 +4,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#5b3a75">
-  <meta name="description" content="کلینیک دندان‌پزشکی زیبایی میراث؛ طراحی لبخند، لمینیت و کامپوزیت با رویکردی شخصی و دقیق.">
-  <title>میراث | طراحی لبخند، لمینیت و کامپوزیت</title>
+  <meta name="description" content="کلینیک دندان‌پزشکی زیبایی میراث در تهران؛ طراحی اختصاصی لبخند، لمینیت سرامیکی و کامپوزیت ونیر. وقتی میخندی، خیلی خوشگلتری!">
+  <title>کلینیک دندان‌پزشکی زیبایی میراث | وقتی میخندی، خیلی خوشگلتری!</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Estedad:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script defer src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
   <style>
     :root {
-      --background: #fff;
+      --background: #ffffff;
       --surface: #f8f6fb;
       --surface-tint: #eee9f5;
       --primary: #5b3a75;
       --primary-deep: #382047;
       --primary-soft: #806499;
+      --accent: #9d4edd;
       --ink: #241a2c;
-      --muted: #716579;
+      --muted: #6e6277;
       --stroke: #e9e3ee;
       --success: #26765f;
-      --shadow: 0 20px 60px rgba(56, 32, 71, .10);
+      --shadow: 0 20px 60px rgba(56, 32, 71, .09);
+      --shadow-hover: 0 24px 70px rgba(56, 32, 71, .16);
       --radius-lg: 24px;
       --radius-md: 18px;
+      --radius-sm: 12px;
       --nav-space: 88px;
     }
     * { box-sizing: border-box; }
@@ -35,220 +38,597 @@
     button, input, select, textarea { font: inherit; }
     button { cursor: pointer; }
     img { display: block; max-width: 100%; }
-    .wrap { width: min(1120px, calc(100% - 32px)); margin-inline: auto; }
+    .wrap { width: min(1140px, calc(100% - 36px)); margin-inline: auto; }
     .ltr { direction: ltr; unicode-bidi: isolate; }
-    .eyebrow { color: var(--primary); font-size: .78rem; letter-spacing: .13em; font-weight: 700; }
-    .section { padding: 76px 0; scroll-margin-top: 24px; }
-    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
-    .section-head h2 { margin: 5px 0 0; font-size: clamp(1.7rem, 4vw, 2.45rem); line-height: 1.35; }
-    .section-head p { max-width: 430px; color: var(--muted); margin: 0; font-size: .96rem; }
-    .btn { min-height: 48px; border: 0; border-radius: 999px; padding: 0 21px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; font-weight: 700; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+    .eyebrow { color: var(--primary); font-size: .8rem; letter-spacing: .12em; font-weight: 700; text-transform: uppercase; }
+    .section { padding: 80px 0; scroll-margin-top: 24px; }
+    .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 32px; }
+    .section-head h2 { margin: 6px 0 0; font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.35; color: var(--primary-deep); }
+    .section-head p { max-width: 460px; color: var(--muted); margin: 0; font-size: .98rem; }
+    .btn { min-height: 48px; border: 0; border-radius: 999px; padding: 0 22px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; font-weight: 700; transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease; }
     .btn:hover, .btn:focus-visible { transform: translateY(-2px); }
     .btn:focus-visible, .icon-btn:focus-visible, .nav-item:focus-visible, .faq-q:focus-visible { outline: 3px solid rgba(128,100,153,.35); outline-offset: 3px; }
-    .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 12px 28px rgba(91,58,117,.22); }
-    .btn-primary:hover { background: var(--primary-deep); }
+    .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 12px 28px rgba(91,58,117,.24); }
+    .btn-primary:hover { background: var(--primary-deep); box-shadow: 0 14px 32px rgba(56,32,71,.32); }
     .btn-quiet { background: var(--surface-tint); color: var(--primary-deep); }
+    .btn-quiet:hover { background: #e3d9ee; }
+    .btn-sm { min-height: 38px; padding: 0 16px; font-size: .82rem; }
     .icon { width: 21px; height: 21px; flex: 0 0 auto; }
 
     /* Header */
-    .topbar { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.88); border-bottom: 1px solid rgba(233,227,238,.7); backdrop-filter: blur(14px); }
-    .topbar-inner { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; color: var(--primary-deep); }
-    .brand-mark { width: 40px; height: 40px; border: 1.5px solid var(--primary); border-radius: 50% 50% 46% 46%; display: grid; place-items: center; color: var(--primary); }
-    .brand-mark svg { width: 26px; height: 26px; }
-    .brand-copy { display: grid; line-height: 1.2; }
-    .brand-copy strong { font-size: 1rem; }
-    .brand-copy small { color: var(--muted); font-size: .64rem; letter-spacing: .08em; direction: ltr; text-align: right; }
-    .desktop-nav { display: flex; align-items: center; gap: 25px; color: var(--muted); font-size: .88rem; }
+    .topbar { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.92); border-bottom: 1px solid rgba(233,227,238,.85); backdrop-filter: blur(16px); }
+    .topbar-inner { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 14px; font-weight: 700; color: var(--primary-deep); }
+    .brand-logo { width: 46px; height: 46px; object-fit: contain; border-radius: 12px; }
+    .brand-copy { display: grid; line-height: 1.25; }
+    .brand-copy strong { font-size: 1.1rem; letter-spacing: -.02em; }
+    .brand-copy small { color: var(--muted); font-size: .68rem; letter-spacing: .08em; direction: ltr; text-align: right; }
+    .desktop-nav { display: flex; align-items: center; gap: 26px; color: var(--muted); font-size: .92rem; font-weight: 500; }
     .desktop-nav a { transition: color .2s ease; }
     .desktop-nav a:hover { color: var(--primary); }
-    .topbar .btn { min-height: 42px; padding-inline: 17px; font-size: .82rem; }
+    .topbar .btn { min-height: 42px; padding-inline: 18px; font-size: .85rem; }
 
     /* Hero */
-    .hero { padding: 44px 0 54px; min-height: min(690px, 76dvh); display: grid; align-items: center; }
-    .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, .9fr); align-items: center; gap: 54px; }
-    .hero-copy h1 { margin: 11px 0 16px; max-width: 650px; font-size: clamp(2.1rem, 5vw, 4.25rem); line-height: 1.23; letter-spacing: -.035em; }
+    .hero { padding: 48px 0 60px; min-height: min(720px, 80dvh); display: grid; align-items: center; position: relative; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(360px, .85fr); align-items: center; gap: 48px; }
+    .hero-copy { position: relative; z-index: 2; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; background: var(--surface-tint); color: var(--primary); font-size: .84rem; font-weight: 700; margin-bottom: 14px; }
+    .hero-badge::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 0 4px rgba(91,58,117,.16); }
+    .hero-copy h1 { margin: 0 0 10px; max-width: 620px; font-size: clamp(2.2rem, 5.2vw, 4.1rem); line-height: 1.24; letter-spacing: -.03em; color: var(--ink); }
     .hero-copy h1 span { color: var(--primary); }
-    .hero-copy > p { max-width: 560px; color: var(--muted); font-size: clamp(1rem, 2vw, 1.15rem); margin: 0 0 25px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 11px; }
-    .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
-    .chip { background: var(--surface); border: 1px solid var(--stroke); border-radius: 999px; color: var(--primary-deep); padding: 5px 12px; font-size: .78rem; }
-    .hero-art { position: relative; min-height: 390px; border-radius: 36px; overflow: hidden; background: radial-gradient(circle at 55% 42%, #fff 0 18%, transparent 46%), linear-gradient(145deg, #f8f6fb, #eee9f5); border: 1px solid var(--stroke); box-shadow: var(--shadow); }
-    .hero-art::after { content: ''; position: absolute; inset: 18px; border: 1px solid rgba(91,58,117,.12); border-radius: 27px; pointer-events: none; }
-    .hero-logo { position: absolute; top: 29px; right: 31px; width: 112px; height: auto; opacity: .74; filter: brightness(0) saturate(100%) invert(22%) sepia(14%) saturate(1250%) hue-rotate(232deg) brightness(85%) contrast(92%); }
-    .smile-svg { position: absolute; inset: 65px 35px 32px; width: calc(100% - 70px); height: calc(100% - 97px); overflow: visible; }
-    .smile-path { fill: none; stroke: var(--primary); stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 1000; stroke-dashoffset: 1000; }
-    .guide { fill: none; stroke: var(--primary-soft); stroke-width: 1.2; stroke-dasharray: 4 8; opacity: .45; }
+    .hero-slogan-highlight { display: block; font-size: clamp(1.4rem, 3.4vw, 2.35rem); font-weight: 800; color: var(--primary); margin: 6px 0 18px; line-height: 1.35; }
+    .hero-desc { max-width: 540px; color: var(--muted); font-size: clamp(1rem, 2vw, 1.12rem); margin: 0 0 28px; line-height: 1.9; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+    .chip { background: var(--surface); border: 1px solid var(--stroke); border-radius: 999px; color: var(--primary-deep); padding: 6px 14px; font-size: .82rem; font-weight: 600; }
+
+    /* Hero Art */
+    .hero-art { position: relative; min-height: 420px; border-radius: 36px; overflow: hidden; background: radial-gradient(circle at 60% 40%, #ffffff 0%, #faf8fc 50%, #eee9f5 100%); border: 1px solid var(--stroke); box-shadow: var(--shadow); }
+    .hero-art::after { content: ''; position: absolute; inset: 16px; border: 1px solid rgba(91,58,117,.10); border-radius: 28px; pointer-events: none; }
+    .hero-logo-box { position: absolute; top: 28px; right: 28px; z-index: 3; display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,.88); padding: 8px 14px; border-radius: 999px; border: 1px solid var(--stroke); backdrop-filter: blur(8px); box-shadow: 0 8px 24px rgba(56,32,71,.06); }
+    .hero-logo-img { width: 32px; height: 32px; object-fit: contain; }
+    .hero-logo-text { font-size: .78rem; font-weight: 700; color: var(--primary-deep); }
+    .smile-svg { position: absolute; inset: 70px 30px 45px; width: calc(100% - 60px); height: calc(100% - 115px); overflow: visible; }
+    .smile-path { fill: none; stroke: var(--primary); stroke-width: 2.8; stroke-linecap: round; stroke-dasharray: 1000; stroke-dashoffset: 1000; }
+    .guide { fill: none; stroke: var(--primary-soft); stroke-width: 1.3; stroke-dasharray: 4 8; opacity: .45; }
     .node { fill: var(--primary); opacity: 0; }
-    .node-ring { fill: none; stroke: var(--primary-soft); stroke-width: 1; opacity: 0; }
-    .tooth-line { fill: #fff; stroke: var(--primary-soft); stroke-width: 1.1; opacity: 0; }
-    .art-caption { position: absolute; left: 30px; bottom: 27px; display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: .74rem; }
-    .art-caption i { width: 8px; height: 8px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 0 5px rgba(91,58,117,.12); }
+    .node-ring { fill: none; stroke: var(--primary-soft); stroke-width: 1.2; opacity: 0; }
+    .tooth-line { fill: #ffffff; stroke: var(--primary-soft); stroke-width: 1.2; opacity: 0; }
+    .art-caption { position: absolute; left: 30px; bottom: 28px; display: flex; align-items: center; gap: 10px; color: var(--primary-deep); font-size: .8rem; font-weight: 600; background: rgba(255,255,255,.9); padding: 6px 14px; border-radius: 999px; border: 1px solid var(--stroke); }
+    .art-caption i { width: 8px; height: 8px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 0 5px rgba(91,58,117,.16); }
 
-    /* Cards */
-    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .service-card { min-height: 240px; padding: 24px; background: var(--surface); border: 1px solid var(--stroke); border-radius: var(--radius-lg); position: relative; overflow: hidden; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
-    .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: rgba(91,58,117,.28); }
-    .service-card::before { content: ''; position: absolute; width: 130px; height: 130px; border-radius: 50%; background: rgba(128,100,153,.12); top: -62px; left: -35px; }
-    .service-icon { width: 43px; height: 43px; display: grid; place-items: center; border-radius: 14px; color: var(--primary); background: #fff; border: 1px solid var(--stroke); position: relative; }
-    .service-card h3 { font-size: 1.14rem; margin: 18px 0 7px; }
-    .service-card p { color: var(--muted); font-size: .86rem; margin: 0; }
-    .service-card .learn { display: inline-flex; align-items: center; gap: 5px; color: var(--primary); font-size: .78rem; font-weight: 700; margin-top: 18px; }
+    /* Services */
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .service-card { min-height: 250px; padding: 28px 24px; background: var(--surface); border: 1px solid var(--stroke); border-radius: var(--radius-lg); position: relative; overflow: hidden; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+    .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: rgba(91,58,117,.32); }
+    .service-card::before { content: ''; position: absolute; width: 140px; height: 140px; border-radius: 50%; background: rgba(128,100,153,.10); top: -65px; left: -40px; pointer-events: none; }
+    .service-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; color: var(--primary); background: #ffffff; border: 1px solid var(--stroke); position: relative; box-shadow: 0 6px 16px rgba(56,32,71,.05); }
+    .service-card h3 { font-size: 1.22rem; margin: 18px 0 8px; color: var(--primary-deep); }
+    .service-card p { color: var(--muted); font-size: .9rem; margin: 0; line-height: 1.8; }
+    .service-card .learn { display: inline-flex; align-items: center; gap: 6px; color: var(--primary); font-size: .82rem; font-weight: 700; margin-top: 20px; }
 
-    .result-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; }
-    .result-card { overflow: hidden; border-radius: var(--radius-md); background: var(--surface); border: 1px solid var(--stroke); }
+    /* Results */
+    .result-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .result-card { overflow: hidden; border-radius: var(--radius-md); background: var(--surface); border: 1px solid var(--stroke); transition: transform .3s ease, box-shadow .3s ease; }
+    .result-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
     .result-card figure { margin: 0; aspect-ratio: 1 / 1.08; overflow: hidden; position: relative; background: var(--surface-tint); }
     .result-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
-    .result-card:hover img { transform: scale(1.045); }
-    .result-label { position: absolute; right: 10px; bottom: 10px; border-radius: 999px; padding: 3px 9px; color: var(--primary-deep); background: rgba(255,255,255,.9); font-size: .7rem; }
-    .result-card figcaption { padding: 11px 13px 13px; color: var(--muted); font-size: .78rem; }
-    .center-action { text-align: center; margin-top: 23px; }
+    .result-card:hover img { transform: scale(1.05); }
+    .result-label { position: absolute; right: 12px; bottom: 12px; border-radius: 999px; padding: 4px 11px; color: var(--primary-deep); background: rgba(255,255,255,.94); font-size: .74rem; font-weight: 700; box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+    .result-card figcaption { padding: 13px 15px; color: var(--primary-deep); font-size: .84rem; font-weight: 600; text-align: center; }
+    .center-action { text-align: center; margin-top: 28px; }
 
-    .method { display: grid; grid-template-columns: .95fr 1.05fr; align-items: center; gap: 48px; }
-    .method-visual { min-height: 300px; border-radius: 28px; background: var(--primary-deep); color: #fff; padding: 30px; position: relative; overflow: hidden; }
-    .method-visual::before, .method-visual::after { content: ''; position: absolute; border: 1px solid rgba(255,255,255,.16); border-radius: 50%; width: 260px; height: 260px; }
-    .method-visual::before { left: -95px; bottom: -155px; }
-    .method-visual::after { right: -90px; top: -140px; }
-    .method-visual h3 { font-size: 1.55rem; line-height: 1.45; max-width: 260px; margin: 0 0 42px; position: relative; }
-    .method-visual .line { height: 1px; width: 85%; background: rgba(255,255,255,.25); position: relative; }
-    .method-visual .line::after { content: ''; position: absolute; right: 17%; top: -4px; width: 9px; height: 9px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 6px rgba(255,255,255,.12); }
-    .method-list { display: grid; gap: 18px; }
-    .method-item { display: grid; grid-template-columns: 45px 1fr; gap: 14px; align-items: start; }
-    .method-num { width: 42px; height: 42px; border-radius: 50%; background: var(--surface-tint); color: var(--primary); display: grid; place-items: center; font-weight: 700; font-size: .82rem; }
-    .method-item h3 { margin: 0 0 2px; font-size: 1rem; }
-    .method-item p { margin: 0; color: var(--muted); font-size: .84rem; }
+    /* Approach / Method */
+    .method { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 48px; }
+    .method-visual { min-height: 320px; border-radius: 28px; background: linear-gradient(145deg, var(--primary-deep), #261331); color: #fff; padding: 36px 32px; position: relative; overflow: hidden; box-shadow: var(--shadow); }
+    .method-visual::before, .method-visual::after { content: ''; position: absolute; border: 1px solid rgba(255,255,255,.14); border-radius: 50%; width: 280px; height: 280px; }
+    .method-visual::before { left: -90px; bottom: -150px; }
+    .method-visual::after { right: -90px; top: -130px; }
+    .method-visual h3 { font-size: 1.65rem; line-height: 1.5; max-width: 290px; margin: 12px 0 46px; position: relative; }
+    .method-visual .line { height: 1px; width: 85%; background: rgba(255,255,255,.28); position: relative; }
+    .method-visual .line::after { content: ''; position: absolute; right: 18%; top: -4px; width: 9px; height: 9px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 6px rgba(255,255,255,.14); }
+    .method-list { display: grid; gap: 20px; }
+    .method-item { display: grid; grid-template-columns: 46px 1fr; gap: 16px; align-items: start; }
+    .method-num { width: 44px; height: 44px; border-radius: 50%; background: var(--surface-tint); color: var(--primary); display: grid; place-items: center; font-weight: 800; font-size: .9rem; }
+    .method-item h3 { margin: 0 0 3px; font-size: 1.08rem; color: var(--primary-deep); }
+    .method-item p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.8; }
 
+    /* FAQ */
     .faq-list { border-top: 1px solid var(--stroke); }
     .faq { border-bottom: 1px solid var(--stroke); }
-    .faq-q { width: 100%; border: 0; background: transparent; text-align: right; padding: 18px 0; display: flex; align-items: center; justify-content: space-between; gap: 18px; color: var(--ink); font-weight: 600; }
-    .faq-q span { width: 30px; height: 30px; border-radius: 50%; background: var(--surface); color: var(--primary); display: grid; place-items: center; font-size: 1.25rem; font-weight: 400; transition: transform .2s ease; }
+    .faq-q { width: 100%; border: 0; background: transparent; text-align: right; padding: 20px 0; display: flex; align-items: center; justify-content: space-between; gap: 18px; color: var(--ink); font-weight: 700; font-size: 1rem; }
+    .faq-q span { width: 32px; height: 32px; border-radius: 50%; background: var(--surface); color: var(--primary); display: grid; place-items: center; font-size: 1.35rem; font-weight: 400; transition: transform .2s ease; }
     .faq-a { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
-    .faq-a p { max-width: 760px; margin: 0 0 18px; color: var(--muted); font-size: .88rem; }
+    .faq-a p { max-width: 800px; margin: 0 0 20px; color: var(--muted); font-size: .92rem; line-height: 1.85; }
     .faq.open .faq-q span { transform: rotate(45deg); }
 
-    .cta { padding: 30px; border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--stroke); display: flex; align-items: center; justify-content: space-between; gap: 22px; }
-    .cta h2 { margin: 0 0 4px; font-size: 1.45rem; }
-    .cta p { color: var(--muted); margin: 0; font-size: .88rem; }
-    footer { padding: 35px 0 28px; border-top: 1px solid var(--stroke); color: var(--muted); font-size: .78rem; }
-    .footer-inner { display: flex; justify-content: space-between; gap: 24px; align-items: center; }
+    /* Contact & Location Section */
+    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .contact-card { padding: 28px 24px; background: var(--surface); border: 1px solid var(--stroke); border-radius: var(--radius-lg); position: relative; display: flex; flex-direction: column; justify-content: space-between; }
+    .contact-card-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+    .contact-icon { width: 44px; height: 44px; border-radius: 14px; background: #ffffff; border: 1px solid var(--stroke); color: var(--primary); display: grid; place-items: center; box-shadow: 0 4px 12px rgba(56,32,71,.04); }
+    .contact-card h3 { margin: 0; font-size: 1.15rem; color: var(--primary-deep); }
+    .contact-card p { color: var(--muted); font-size: .92rem; line-height: 1.85; margin: 0 0 16px; }
+    .address-highlight { color: var(--primary-deep); font-weight: 700; font-size: .95rem; line-height: 1.9; margin-bottom: 18px; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+    .hours-table { list-style: none; padding: 0; margin: 0 0 16px; display: grid; gap: 8px; font-size: .86rem; color: var(--muted); }
+    .hours-table li { display: flex; justify-content: space-between; border-bottom: 1px dashed var(--stroke); padding-bottom: 6px; }
+    .hours-table strong { color: var(--primary-deep); }
 
-    /* Mobile navigation */
-    .bottom-nav { position: fixed; z-index: 30; right: 0; bottom: 0; left: 0; display: flex; justify-content: space-around; gap: 2px; padding: 8px 7px max(8px, env(safe-area-inset-bottom)); background: rgba(255,255,255,.94); border-top: 1px solid var(--stroke); backdrop-filter: blur(18px); }
-    .nav-item { min-width: 55px; min-height: 52px; border: 0; background: transparent; color: var(--muted); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1px; border-radius: 15px; font-size: .65rem; transition: color .2s ease, background .2s ease, transform .2s ease; }
-    .nav-item svg { width: 21px; height: 21px; }
+    /* CTA */
+    .cta { padding: 36px 32px; border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--stroke); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .cta h2 { margin: 0 0 6px; font-size: 1.55rem; color: var(--primary-deep); }
+    .cta p { color: var(--muted); margin: 0; font-size: .94rem; }
+
+    /* Footer */
+    footer { padding: 48px 0 32px; border-top: 1px solid var(--stroke); color: var(--muted); font-size: .84rem; background: #faf9fc; }
+    .footer-content { display: grid; gap: 24px; }
+    .footer-top { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; padding-bottom: 20px; border-bottom: 1px solid var(--stroke); }
+    .footer-brand { display: flex; align-items: center; gap: 12px; }
+    .footer-logo { width: 40px; height: 40px; object-fit: contain; }
+    .footer-slogan { font-weight: 700; color: var(--primary); font-size: 1.05rem; }
+    .footer-info { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; font-size: .86rem; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: .78rem; padding-top: 16px; border-top: 1px solid var(--stroke); }
+
+    /* Mobile Navigation */
+    .bottom-nav { position: fixed; z-index: 30; right: 0; bottom: 0; left: 0; display: flex; justify-content: space-around; gap: 2px; padding: 8px 6px max(8px, env(safe-area-inset-bottom)); background: rgba(255,255,255,.95); border-top: 1px solid var(--stroke); backdrop-filter: blur(18px); }
+    .nav-item { min-width: 55px; min-height: 52px; border: 0; background: transparent; color: var(--muted); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 2px; border-radius: 14px; font-size: .65rem; font-weight: 600; transition: color .2s ease, background .2s ease, transform .2s ease; }
+    .nav-item svg { width: 22px; height: 22px; }
     .nav-item.active { color: var(--primary); background: var(--surface-tint); font-weight: 700; }
     .nav-item:active { transform: scale(.94); }
 
     /* Sheets */
     .sheet-layer { position: fixed; z-index: 50; inset: 0; visibility: hidden; opacity: 0; transition: opacity .25s ease, visibility .25s ease; }
     .sheet-layer.open { visibility: visible; opacity: 1; }
-    .sheet-backdrop { position: absolute; inset: 0; background: rgba(36,26,44,.36); backdrop-filter: blur(8px); }
-    .sheet { position: absolute; right: 0; bottom: 0; left: 0; max-height: min(90dvh, 760px); overflow: auto; background: #fff; border-radius: 28px 28px 0 0; box-shadow: 0 -18px 65px rgba(36,26,44,.2); padding: 11px 20px max(23px, env(safe-area-inset-bottom)); transform: translateY(100%); transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+    .sheet-backdrop { position: absolute; inset: 0; background: rgba(36,26,44,.4); backdrop-filter: blur(8px); }
+    .sheet { position: absolute; right: 0; bottom: 0; left: 0; max-height: min(90dvh, 760px); overflow: auto; background: #fff; border-radius: 28px 28px 0 0; box-shadow: 0 -18px 65px rgba(36,26,44,.2); padding: 12px 22px max(24px, env(safe-area-inset-bottom)); transform: translateY(100%); transition: transform .35s cubic-bezier(.2,.8,.2,1); }
     .sheet-layer.open .sheet { transform: translateY(0); }
-    .sheet-handle { width: 42px; height: 4px; border-radius: 99px; background: #d7cfde; margin: 0 auto 19px; }
+    .sheet-handle { width: 44px; height: 4px; border-radius: 99px; background: #d7cfde; margin: 0 auto 20px; }
     .sheet-head { display: flex; justify-content: space-between; align-items: start; gap: 16px; }
-    .sheet-head h2 { margin: 0; font-size: 1.3rem; }
-    .sheet-head p { margin: 2px 0 17px; color: var(--muted); font-size: .82rem; }
+    .sheet-head h2 { margin: 0; font-size: 1.35rem; color: var(--primary-deep); }
+    .sheet-head p { margin: 3px 0 18px; color: var(--muted); font-size: .85rem; }
     .icon-btn { width: 38px; height: 38px; border: 1px solid var(--stroke); background: var(--surface); color: var(--primary); border-radius: 50%; display: grid; place-items: center; font-size: 1.3rem; }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
-    .field { display: grid; gap: 5px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .field { display: grid; gap: 6px; }
     .field.full { grid-column: 1 / -1; }
-    .field label { font-size: .76rem; font-weight: 700; color: var(--primary-deep); }
-    .field input, .field select, .field textarea { width: 100%; border: 1px solid var(--stroke); border-radius: 13px; background: #fff; color: var(--ink); padding: 10px 12px; min-height: 44px; outline: none; }
-    .field textarea { min-height: 86px; resize: vertical; }
+    .field label { font-size: .78rem; font-weight: 700; color: var(--primary-deep); }
+    .field input, .field select, .field textarea { width: 100%; border: 1px solid var(--stroke); border-radius: 14px; background: #fff; color: var(--ink); padding: 11px 14px; min-height: 46px; outline: none; transition: border-color .2s ease, box-shadow .2s ease; }
+    .field textarea { min-height: 90px; resize: vertical; }
     .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--primary-soft); box-shadow: 0 0 0 4px rgba(128,100,153,.12); }
-    .consent { display: flex; gap: 8px; align-items: start; margin: 14px 0; color: var(--muted); font-size: .72rem; }
-    .consent input { margin-top: 5px; accent-color: var(--primary); }
-    .form-status { margin: 13px 0 0; color: var(--muted); font-size: .78rem; }
-    .account-state { padding: 14px; border-radius: 16px; background: var(--surface); border: 1px solid var(--stroke); color: var(--muted); font-size: .84rem; }
+    .consent { display: flex; gap: 8px; align-items: start; margin: 16px 0; color: var(--muted); font-size: .76rem; }
+    .consent input { margin-top: 4px; accent-color: var(--primary); }
+    .form-status { margin: 14px 0 0; color: var(--muted); font-size: .82rem; }
+    .account-state { padding: 16px; border-radius: 16px; background: var(--surface); border: 1px solid var(--stroke); color: var(--muted); font-size: .88rem; }
 
     [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
     [data-reveal].visible { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } [data-reveal] { opacity: 1; transform: none; } .smile-path { stroke-dashoffset: 0; } .node, .node-ring, .tooth-line { opacity: 1; } }
-    @media (min-width: 800px) { body { padding-bottom: 0; } .bottom-nav { display: none; } .sheet { right: 50%; bottom: 50%; left: auto; width: min(560px, calc(100% - 32px)); max-height: 90dvh; border-radius: 24px; transform: translate(50%, 45%); } .sheet-layer.open .sheet { transform: translate(50%, 50%); } }
-    @media (max-width: 799px) { .desktop-nav, .topbar .btn { display: none; } .topbar-inner { min-height: 62px; } .hero { padding-top: 28px; min-height: 0; } .hero-grid { grid-template-columns: 1fr; gap: 30px; } .hero-copy h1 { font-size: clamp(2rem, 10vw, 3.2rem); } .hero-art { min-height: 300px; order: -1; } .smile-svg { inset: 55px 24px 24px; width: calc(100% - 48px); height: calc(100% - 79px); } .section { padding: 58px 0; } .section-head { display: block; } .section-head p { margin-top: 9px; } .service-grid { grid-template-columns: 1fr; } .service-card { min-height: 0; } .result-strip { grid-template-columns: repeat(2, 1fr); gap: 10px; } .method { grid-template-columns: 1fr; gap: 28px; } .method-visual { min-height: 240px; } .cta, .footer-inner { display: block; } .cta .btn { margin-top: 17px; } .footer-inner > span { display: block; margin-top: 8px; } }
-    @media (max-width: 390px) { .wrap { width: min(100% - 24px, 1120px); } .hero-actions .btn { width: 100%; } .form-grid { grid-template-columns: 1fr; } .field.full { grid-column: auto; } }
+    @media (min-width: 800px) { body { padding-bottom: 0; } .bottom-nav { display: none; } .sheet { right: 50%; bottom: 50%; left: auto; width: min(580px, calc(100% - 32px)); max-height: 90dvh; border-radius: 24px; transform: translate(50%, 45%); } .sheet-layer.open .sheet { transform: translate(50%, 50%); } }
+    @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 799px) { .desktop-nav, .topbar .btn { display: none; } .topbar-inner { min-height: 64px; } .hero { padding-top: 24px; min-height: 0; } .hero-grid { grid-template-columns: 1fr; gap: 32px; } .hero-copy h1 { font-size: clamp(2.1rem, 9vw, 3.2rem); } .hero-art { min-height: 320px; order: -1; } .smile-svg { inset: 55px 20px 25px; width: calc(100% - 40px); height: calc(100% - 80px); } .section { padding: 56px 0; } .section-head { display: block; } .section-head p { margin-top: 10px; } .service-grid { grid-template-columns: 1fr; } .service-card { min-height: 0; } .result-strip { grid-template-columns: repeat(2, 1fr); gap: 12px; } .method { grid-template-columns: 1fr; gap: 30px; } .method-visual { min-height: 250px; } .cta, .footer-top, .footer-info, .footer-bottom { display: block; } .cta .btn { margin-top: 18px; } .footer-slogan { margin-top: 10px; } }
+    @media (max-width: 390px) { .wrap { width: min(100% - 24px, 1140px); } .hero-actions .btn { width: 100%; } .form-grid { grid-template-columns: 1fr; } .field.full { grid-column: auto; } }
   </style>
 </head>
 <body>
   <header class="topbar">
     <div class="wrap topbar-inner">
-      <a class="brand" href="#home" aria-label="بازگشت به خانه">
-        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 13c1-5 5-8 9-8s8 3 9 8c1 5-1 12-4 15-2 2-3-5-5-5s-3 7-5 5c-3-3-5-10-4-15Z"/><path d="M8 13c3 2 5 3 8 3s5-1 8-3"/></svg></span>
-        <span class="brand-copy"><strong>میراث</strong><small>MIRAAS DENTAL</small></span>
+      <a class="brand" href="#home" aria-label="کلینیک میراث — صفحه اصلی">
+        <img src="logo/logo.png" alt="لوگوی کلینیک میراث" class="brand-logo" width="46" height="46">
+        <span class="brand-copy"><strong>کلینیک میراث</strong><small>MIRAAS DENTAL CLINIC</small></span>
       </a>
       <nav class="desktop-nav" aria-label="ناوبری اصلی">
-        <a href="#services">خدمات</a><a href="#results">نمونه‌کارها</a><a href="#method">رویکرد ما</a><a href="#faq">سؤالات متداول</a>
+        <a href="#services">خدمات</a>
+        <a href="#results">لبخندهایی که ساخته‌ایم</a>
+        <a href="#method">رویکرد ما</a>
+        <a href="#contact">آدرس و تماس</a>
+        <a href="#faq">سؤالات متداول</a>
       </nav>
       <button class="btn btn-primary" data-open-sheet="consultation">درخواست مشاوره <span aria-hidden="true">←</span></button>
     </div>
   </header>
 
   <main id="home">
+    <!-- HERO SECTION -->
     <section class="hero">
       <div class="wrap hero-grid">
         <div class="hero-copy" data-reveal>
-          <div class="eyebrow">AESTHETIC DENTISTRY · MIRAAS</div>
-          <h1>لبخند شما، <span>نقطهٔ شروع</span> طراحی ماست.</h1>
-          <p>طراحی لبخند، لمینیت و کامپوزیت با توجه به ویژگی‌های چهره، سلامت دندان و سلیقهٔ شما.</p>
-          <div class="hero-actions"><button class="btn btn-primary" data-open-sheet="consultation">درخواست مشاوره <span aria-hidden="true">←</span></button><a class="btn btn-quiet" href="#results">دیدن نمونه‌کارها</a></div>
-          <div class="hero-chips" aria-label="خدمات اصلی"><span class="chip">طراحی لبخند</span><span class="chip">لمینیت</span><span class="chip">کامپوزیت</span></div>
+          <div class="hero-badge">AESTHETIC DENTISTRY · MIRAAS CLINIC</div>
+          <h1>طراحی اختصاصی <span>لبخند شما</span></h1>
+          <div class="hero-slogan-highlight">«وقتی میخندی، خیلی خوشگلتری!»</div>
+          <p class="hero-desc">طراحی لبخند، لمینیت سرامیکی و کامپوزیت با ارزیابی دقیق چهره، سلامت دندان و فرم اختصاصی لبخند شما در محیطی آرام و استاندارد.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" data-open-sheet="consultation">درخواست مشاوره حضوری <span aria-hidden="true">←</span></button>
+            <a class="btn btn-quiet" href="#results">لبخندهایی که ساخته‌ایم</a>
+            <a class="btn btn-quiet" href="https://wa.me/989125168278?text=سلام،+برای+مشاوره+طراحی+لبخند+پیام+می‌دهم" target="_blank" rel="noopener">مشاوره واتساپ ↗</a>
+          </div>
+          <div class="hero-chips" aria-label="خدمات اصلی">
+            <span class="chip">طراحی لبخند</span>
+            <span class="chip">لمینیت سرامیکی</span>
+            <span class="chip">کامپوزیت ونیر</span>
+            <span class="chip">آنالیز دیجیتال چهره</span>
+          </div>
         </div>
-        <div class="hero-art" aria-label="تصویرسازی مسیر طراحی لبخند" data-reveal>
-          <img class="hero-logo" src="logo/english-shape.png" alt="MIRAAS" loading="eager">
-          <svg class="smile-svg" viewBox="0 0 520 300" role="img" aria-label="خط انتزاعی لبخند و نقاط طراحی">
-            <path class="guide" d="M65 100 C170 220 350 220 455 100"/><path class="guide" d="M100 125 C190 205 330 205 420 125"/>
+        <div class="hero-art" aria-label="تصویرسازی مسیر طراحی لبخند شما" data-reveal>
+          <div class="hero-logo-box">
+            <img class="hero-logo-img" src="logo/logo.png" alt="MIRAAS" loading="eager">
+            <span class="hero-logo-text">MIRAAS CLINIC</span>
+          </div>
+          <svg class="smile-svg" viewBox="0 0 520 300" role="img" aria-label="خط طراحی اختصاصی لبخند و نقاط متناسب">
+            <path class="guide" d="M65 100 C170 220 350 220 455 100"/>
+            <path class="guide" d="M100 125 C190 205 330 205 420 125"/>
             <path class="smile-path" d="M65 100 C170 220 350 220 455 100"/>
-            <path class="tooth-line" d="M166 159c7-10 20-10 27 0v31c-8 7-19 7-27 0z"/><path class="tooth-line" d="M196 178c7-9 19-9 26 0v20c-7 6-18 6-26 0z"/><path class="tooth-line" d="M298 178c7-9 19-9 26 0v20c-7 6-18 6-26 0z"/><path class="tooth-line" d="M327 159c7-10 20-10 27 0v31c-8 7-19 7-27 0z"/>
-            <circle class="node-ring" cx="125" cy="150" r="9"/><circle class="node-ring" cx="260" cy="205" r="9"/><circle class="node-ring" cx="395" cy="150" r="9"/><circle class="node" cx="125" cy="150" r="3.5"/><circle class="node" cx="260" cy="205" r="3.5"/><circle class="node" cx="395" cy="150" r="3.5"/>
+            <path class="tooth-line" d="M166 159c7-10 20-10 27 0v31c-8 7-19 7-27 0z"/>
+            <path class="tooth-line" d="M196 178c7-9 19-9 26 0v20c-7 6-18 6-26 0z"/>
+            <path class="tooth-line" d="M298 178c7-9 19-9 26 0v20c-7 6-18 6-26 0z"/>
+            <path class="tooth-line" d="M327 159c7-10 20-10 27 0v31c-8 7-19 7-27 0z"/>
+            <circle class="node-ring" cx="125" cy="150" r="9"/>
+            <circle class="node-ring" cx="260" cy="205" r="9"/>
+            <circle class="node-ring" cx="395" cy="150" r="9"/>
+            <circle class="node" cx="125" cy="150" r="3.5"/>
+            <circle class="node" cx="260" cy="205" r="3.5"/>
+            <circle class="node" cx="395" cy="150" r="3.5"/>
           </svg>
-          <div class="art-caption"><i aria-hidden="true"></i><span>طراحی متناسب با لبخند شما</span></div>
+          <div class="art-caption"><i aria-hidden="true"></i><span>طراحی اختصاصی برای لبخند شما</span></div>
         </div>
       </div>
     </section>
 
+    <!-- SERVICES -->
     <section class="section" id="services">
-      <div class="wrap"><div class="section-head" data-reveal><div><div class="eyebrow">OUR SERVICES</div><h2>زیبایی لبخند، با انتخاب درست شروع می‌شود.</h2></div><p>هر درمان بعد از بررسی شرایط دندان و گفت‌وگو دربارهٔ نتیجهٔ مطلوب شما پیشنهاد می‌شود.</p></div>
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <div>
+            <div class="eyebrow">OUR SERVICES · خدمات تخصصی</div>
+            <h2>زیبایی لبخند، با انتخاب درست شروع می‌شود.</h2>
+          </div>
+          <p>هر درمان بعد از بررسی شرایط دندان، فک و گفت‌وگو دربارهٔ نتیجهٔ مطلوب و طبیعی شما برنامه‌ریزی می‌شود.</p>
+        </div>
         <div class="service-grid">
-          <article class="service-card" data-reveal><div class="service-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c-3 0-5 2-5 5 0 4 1 5 1 8 0 3 1 5 3 5 1.5 0 1.5-3 3-3s1.5 3 3 3c2 0 3-2 3-5 0-3 1-4 1-8 0-3-2-5-5-5-1 0-1.6 1-3 1S13 3 12 3Z"/><path d="M8 8c2 1 6 1 8 0"/></svg></div><h3>کامپوزیت</h3><p>اصلاح فرم، تناسب و رنگ لبخند با حفظ نگاه طبیعی و شخصی.</p><a class="learn" href="#consult">بیشتر بدانید ←</a></article>
-          <article class="service-card" data-reveal><div class="service-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8c1-3 4-5 7-5s6 2 7 5"/><path d="M5 8c1 8 3 12 7 13 4-1 6-5 7-13"/><path d="M8 10c2 1 6 1 8 0"/></svg></div><h3>لمینیت</h3><p>راهکاری ظریف برای هماهنگی بیشتر لبخند، پس از ارزیابی تخصصی.</p><a class="learn" href="#consult">بیشتر بدانید ←</a></article>
-          <article class="service-card" data-reveal><div class="service-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12c3-6 13-6 16 0-3 6-13 6-16 0Z"/><circle cx="12" cy="12" r="3"/><path d="M3 5h4M17 5h4"/></svg></div><h3>طراحی لبخند</h3><p>بررسی هماهنگی لب، دندان و چهره برای رسیدن به یک طرح اختصاصی.</p><a class="learn" href="#consult">بیشتر بدانید ←</a></article>
+          <article class="service-card" data-reveal>
+            <div class="service-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c-3 0-5 2-5 5 0 4 1 5 1 8 0 3 1 5 3 5 1.5 0 1.5-3 3-3s1.5 3 3 3c2 0 3-2 3-5 0-3 1-4 1-8 0-3-2-5-5-5-1 0-1.6 1-3 1S13 3 12 3Z"/><path d="M8 8c2 1 6 1 8 0"/></svg>
+            </div>
+            <h3>کامپوزیت ونیر</h3>
+            <p>اصلاح فرم، رنگ و بستن فواصل دندانی در یک جلسه، با متریال باکیفیت و ظاهری کاملاً نچرال.</p>
+            <a class="learn" href="#consult">درخواست مشاوره کامپوزیت ←</a>
+          </article>
+          <article class="service-card" data-reveal>
+            <div class="service-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8c1-3 4-5 7-5s6 2 7 5"/><path d="M5 8c1 8 3 12 7 13 4-1 6-5 7-13"/><path d="M8 10c2 1 6 1 8 0"/></svg>
+            </div>
+            <h3>لمینیت سرامیکی</h3>
+            <p>راهکاری بادوام و درخشان با ضخامت فوق‌العاده ظریف و ثبات رنگ همیشگی پس از تراش حداقلی.</p>
+            <a class="learn" href="#consult">درخواست مشاوره لمینیت ←</a>
+          </article>
+          <article class="service-card" data-reveal>
+            <div class="service-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12c3-6 13-6 16 0-3 6-13 6-16 0Z"/><circle cx="12" cy="12" r="3"/><path d="M3 5h4M17 5h4"/></svg>
+            </div>
+            <h3>طراحی لبخند (Smile Design)</h3>
+            <p>آنالیز جامع فرم لب‌ها، خط لبخند و تقارن چهره برای خلق طبیعی‌ترین و برازنده‌ترین لبخند شما.</p>
+            <a class="learn" href="#consult">مشاوره اختصاصی طرح لبخند ←</a>
+          </article>
         </div>
       </div>
     </section>
 
+    <!-- RESULTS (PORTFOLIO) -->
     <section class="section" id="results">
-      <div class="wrap"><div class="section-head" data-reveal><div><div class="eyebrow">SELECTED WORK</div><h2>نمونه‌کارهایی برای شروع گفت‌وگو.</h2></div><p>تصاویر نمایش‌داده‌شده باید پیش از انتشار نهایی از نظر رضایت و مجوز بیمار تأیید شوند.</p></div>
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <div>
+            <div class="eyebrow">PORTFOLIO · نتایج درمان</div>
+            <h2>لبخندهایی که ساخته‌ایم</h2>
+          </div>
+          <p>نمونه‌های واقعی از تغییر و اصلاح طرح لبخند مراجعین کلینیک میراث با رویکرد حفظ بافت دندان و زیبایی طبیعی.</p>
+        </div>
         <div class="result-strip">
-          <article class="result-card" data-reveal><figure><img src="results/photo_1_2026-05-27_19-06-46.jpg" alt="نمونه‌کار طراحی لبخند ۱" loading="lazy"><span class="result-label">نمونه‌کار ۰۱</span></figure><figcaption>هماهنگی فرم و تناسب لبخند</figcaption></article>
-          <article class="result-card" data-reveal><figure><img src="results/photo_2_2026-05-27_19-06-46.jpg" alt="نمونه‌کار طراحی لبخند ۲" loading="lazy"><span class="result-label">نمونه‌کار ۰۲</span></figure><figcaption>اصلاح ظریف فرم دندان‌ها</figcaption></article>
-          <article class="result-card" data-reveal><figure><img src="results/photo_3_2026-05-27_19-06-46.jpg" alt="نمونه‌کار طراحی لبخند ۳" loading="lazy"><span class="result-label">نمونه‌کار ۰۳</span></figure><figcaption>طراحی متناسب با چهره</figcaption></article>
-          <article class="result-card" data-reveal><figure><img src="results/photo_4_2026-05-27_19-06-46.jpg" alt="نمونه‌کار طراحی لبخند ۴" loading="lazy"><span class="result-label">نمونه‌کار ۰۴</span></figure><figcaption>ترکیب طبیعی رنگ و فرم</figcaption></article>
-        </div><div class="center-action"><button class="btn btn-quiet" data-open-sheet="gallery">مشاهدهٔ همهٔ نمونه‌کارها</button></div>
+          <article class="result-card" data-reveal>
+            <figure>
+              <img src="results/photo_1_2026-05-27_19-06-46.jpg" alt="لبخند ساخته شده در کلینیک میراث ۱" loading="lazy">
+              <span class="result-label">نمونه‌کار ۰۱</span>
+            </figure>
+            <figcaption>هماهنگی فرم و تقارن خط لبخند</figcaption>
+          </article>
+          <article class="result-card" data-reveal>
+            <figure>
+              <img src="results/photo_2_2026-05-27_19-06-46.jpg" alt="لبخند ساخته شده در کلینیک میراث ۲" loading="lazy">
+              <span class="result-label">نمونه‌کار ۰۲</span>
+            </figure>
+            <figcaption>اصلاح ظریف فرم و رنگ دندان‌ها</figcaption>
+          </article>
+          <article class="result-card" data-reveal>
+            <figure>
+              <img src="results/photo_3_2026-05-27_19-06-46.jpg" alt="لبخند ساخته شده در کلینیک میراث ۳" loading="lazy">
+              <span class="result-label">نمونه‌کار ۰۳</span>
+            </figure>
+            <figcaption>طراحی اختصاصی متناسب با فرم چهره</figcaption>
+          </article>
+          <article class="result-card" data-reveal>
+            <figure>
+              <img src="results/photo_4_2026-05-27_19-06-46.jpg" alt="لبخند ساخته شده در کلینیک میراث ۴" loading="lazy">
+              <span class="result-label">نمونه‌کار ۰۴</span>
+            </figure>
+            <figcaption>ترکیب طبیعی رنگ و انعکاس نور</figcaption>
+          </article>
+        </div>
+        <div class="center-action">
+          <button class="btn btn-quiet" data-open-sheet="gallery">مشاهدهٔ سایر نمونه‌کارها</button>
+        </div>
       </div>
     </section>
 
+    <!-- APPROACH / METHOD -->
     <section class="section" id="method">
-      <div class="wrap method"><div class="method-visual" data-reveal><div class="eyebrow" style="color:#d9c9e8">THE MIRAAS APPROACH</div><h3>زیبایی وقتی ماندگارتر است که با سلامت و شخصیت شما هماهنگ باشد.</h3><div class="line" aria-hidden="true"></div></div><div class="method-list"><div class="method-item" data-reveal><span class="method-num">۰۱</span><div><h3>گفت‌وگو و شناخت</h3><p>از خواسته و سبک لبخند مورد علاقهٔ شما شروع می‌کنیم.</p></div></div><div class="method-item" data-reveal><span class="method-num">۰۲</span><div><h3>ارزیابی و طراحی</h3><p>فرم، تناسب و شرایط دندان با نگاه واقع‌بینانه بررسی می‌شود.</p></div></div><div class="method-item" data-reveal><span class="method-num">۰۳</span><div><h3>اجرای دقیق</h3><p>درمان پیشنهادی با توضیح روشن و تصمیم‌گیری آگاهانه انجام می‌شود.</p></div></div></div></div>
+      <div class="wrap method">
+        <div class="method-visual" data-reveal>
+          <div class="eyebrow" style="color:#d9c9e8">THE MIRAAS APPROACH</div>
+          <h3>زیبایی وقتی ماندگارتر است که با سلامت و شخصیت شما هماهنگ باشد.</h3>
+          <div class="line" aria-hidden="true"></div>
+        </div>
+        <div class="method-list">
+          <div class="method-item" data-reveal>
+            <span class="method-num">۰۱</span>
+            <div>
+              <h3>گفت‌وگو و شناخت دقیق</h3>
+              <p>از سلیقه، انتظارات و سبک لبخند دلخواه شما شروع می‌کنیم.</p>
+            </div>
+          </div>
+          <div class="method-item" data-reveal>
+            <span class="method-num">۰۲</span>
+            <div>
+              <h3>ارزیابی و شبیه‌سازی</h3>
+              <p>فرم، سلامت لثه و تناسب با چهره با متدهای علمی ارزیابی می‌شود.</p>
+            </div>
+          </div>
+          <div class="method-item" data-reveal>
+            <span class="method-num">۰۳</span>
+            <div>
+              <h3>اجرای هنرمندانه و دقیق</h3>
+              <p>درمان انتخابی با ظرافت و رعایت کامل سلامت دندان‌ها انجام می‌پذیرد.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="section" id="faq"><div class="wrap"><div class="section-head" data-reveal><div><div class="eyebrow">FAQ</div><h2>سؤالات متداول</h2></div><p>پاسخ کوتاه است؛ تشخیص و انتخاب نهایی همیشه به مشاورهٔ دندان‌پزشک نیاز دارد.</p></div><div class="faq-list" data-reveal>
-      <div class="faq"><button class="faq-q" type="button" aria-expanded="false">آیا کامپوزیت برای همه مناسب است؟<span aria-hidden="true">+</span></button><div class="faq-a"><p>مناسب‌بودن هر درمان به وضعیت دندان، لثه، عادت‌های فردی و هدف شما بستگی دارد. در مشاوره، گزینه‌های مناسب بررسی می‌شوند.</p></div></div>
-      <div class="faq"><button class="faq-q" type="button" aria-expanded="false">چطور رنگ و فرم لبخند انتخاب می‌شود؟<span aria-hidden="true">+</span></button><div class="faq-a"><p>رنگ و فرم با توجه به چهره، رنگ طبیعی دندان‌ها، تناسب لبخند و سلیقهٔ شما انتخاب می‌شود؛ هدف، نتیجه‌ای هماهنگ و غیرمصنوعی است.</p></div></div>
-      <div class="faq"><button class="faq-q" type="button" aria-expanded="false">برای شروع چه اطلاعاتی لازم است؟<span aria-hidden="true">+</span></button><div class="faq-a"><p>درخواست مشاوره فقط نام، شماره تماس و خدمت موردعلاقهٔ شما را می‌پرسد. اطلاعات پزشکی کامل در این فرم عمومی دریافت نمی‌شود.</p></div></div>
-    </div></div></section>
+    <!-- CONTACT & CLINIC ADDRESS (Item 6) -->
+    <section class="section" id="contact">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <div>
+            <div class="eyebrow">VISIT & CONTACT · اطلاعات کلینیک</div>
+            <h2>آدرس و راه‌های ارتباطی با کلینیک میراث</h2>
+          </div>
+          <p>مشاورهٔ حضوری و آنلاین با تیم متخصص کلینیک زیبایی میراث در محیطی آرام و استاندارد.</p>
+        </div>
 
-    <section class="section" id="consult"><div class="wrap"><div class="cta" data-reveal><div><h2>لبخندتان را از یک گفت‌وگوی خوب شروع کنید.</h2><p>برای دریافت زمان مشاوره، فرم کوتاه را تکمیل کنید.</p></div><button class="btn btn-primary" data-open-sheet="consultation">درخواست مشاوره <span aria-hidden="true">←</span></button></div></div></section>
+        <div class="contact-grid" data-reveal>
+          <!-- Card 1: Address -->
+          <div class="contact-card">
+            <div>
+              <div class="contact-card-head">
+                <div class="contact-icon" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <h3>آدرس کلینیک</h3>
+              </div>
+              <p class="address-highlight">
+                سعادت‌آباد، سرو غربی، خیابان بخشایش، کوچه ۱۷ غربی، برج عرفان، طبقه اول، واحد ۱۰۳.
+              </p>
+            </div>
+            <div class="contact-links">
+              <a class="btn btn-sm btn-quiet" href="https://maps.google.com/?q=تهران،+سعادت‌آباد،+خیابان+بخشایش،+کوچه+۱۷+غربی،+برج+عرفان" target="_blank" rel="noopener">
+                مسیریابی در نقشه ↗
+              </a>
+              <button class="btn btn-sm btn-quiet" data-open-sheet="consultation">رزرو نوبت حضوری</button>
+            </div>
+          </div>
+
+          <!-- Card 2: Phone & WhatsApp -->
+          <div class="contact-card">
+            <div>
+              <div class="contact-card-head">
+                <div class="contact-icon" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <h3>تماس مستقیم</h3>
+              </div>
+              <p>برای دریافت نوبت معاینه و مشاوره رایگان با کارشناسان ما تماس بگیرید:</p>
+              <div style="font-size:1.1rem;font-weight:700;color:var(--primary-deep);margin-bottom:14px;" class="ltr">
+                <a href="tel:+989125934302">۰۹۱۲ ۵۹۳ ۴۳۰۲</a> &nbsp;|&nbsp; <a href="tel:+989125168278">۰۹۱۲ ۵۱۶ ۸۲۷۸</a>
+              </div>
+            </div>
+            <div class="contact-links">
+              <a class="btn btn-sm btn-primary" href="https://wa.me/989125168278?text=سلام،+برای+مشاوره+طراحی+لبخند+پیام+می‌دهم" target="_blank" rel="noopener">
+                پیام در واتساپ ↗
+              </a>
+              <a class="btn btn-sm btn-quiet" href="tel:+989125934302">تماس تلفنی</a>
+            </div>
+          </div>
+
+          <!-- Card 3: Hours -->
+          <div class="contact-card">
+            <div>
+              <div class="contact-card-head">
+                <div class="contact-icon" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                </div>
+                <h3>ساعات کاری</h3>
+              </div>
+              <ul class="hours-table">
+                <li><span>شنبه تا چهارشنبه:</span> <strong>۱۰:۰۰ الی ۱۹:۰۰</strong></li>
+                <li><span>پنجشنبه:</span> <strong>۱۰:۰۰ الی ۱۵:۰۰</strong></li>
+                <li><span>جمعه و ایام تعطیل:</span> <strong>تعطیل</strong></li>
+              </ul>
+            </div>
+            <div class="contact-links">
+              <button class="btn btn-sm btn-quiet" data-open-sheet="consultation">هماهنگی نوبت مشاوره</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <div>
+            <div class="eyebrow">FAQ · پرسش‌های شما</div>
+            <h2>سؤالات متداول</h2>
+          </div>
+          <p>پاسخ‌های کوتاه و کاربردی به متداول‌ترین سؤالات درباره لمینیت، کامپوزیت و طراحی لبخند.</p>
+        </div>
+        <div class="faq-list" data-reveal>
+          <div class="faq"><button class="faq-q" type="button" aria-expanded="false">تفاوت کامپوزیت و لمینیت سرامیکی چیست؟<span aria-hidden="true">+</span></button><div class="faq-a"><p>کامپوزیت ونیر معمولاً در یک جلسه و بدون نیاز به قالب‌گیری آزمایشگاهی اجرا می‌شود و هزینه کمتری دارد. لمینیت سرامیکی در لابراتوار ساخته می‌شود، ماندگاری و استحکام بالاتری دارد و هرگز تغییر رنگ نمی‌دهد.</p></div></div>
+          <div class="faq"><button class="faq-q" type="button" aria-expanded="false">طول عمر لمینیت و کامپوزیت چقدر است؟<span aria-hidden="true">+</span></button><div class="faq-a"><p>با رعایت بهداشت دهان و دندان و چکاپ‌های دوره‌ای، طول عمر کامپوزیت بین ۵ تا ۸ سال و طول عمر لمینیت‌های سرامیکی بین ۱۰ تا ۱۵ سال است.</p></div></div>
+          <div class="faq"><button class="faq-q" type="button" aria-expanded="false">آیا برای انجام کامپوزیت یا لمینیت، دندان‌ها تراش می‌خورند؟<span aria-hidden="true">+</span></button><div class="faq-a"><p>در کامپوزیت در اغلب موارد تراشی صورت نمی‌گیرد یا در حد آماده‌سازی سطحی است. در لمینیت سرامیکی نسل جدید نیز تراش بسیار ظریف و مینیمال (حدود ۰.۳ تا ۰.۵ میلی‌متر) خواهد بود.</p></div></div>
+          <div class="faq"><button class="faq-q" type="button" aria-expanded="false">برای مشاوره حضوری چه مراحلی لازم است؟<span aria-hidden="true">+</span></button><div class="faq-a"><p>کافی است از طریق فرم «درخواست مشاوره» در سایت یا پیام به واتساپ کلینیک، زمان مورد نظر خود را هماهنگ فرمایید تا معاینه و آنالیز لبخند شما انجام شود.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" id="consult">
+      <div class="wrap">
+        <div class="cta" data-reveal>
+          <div>
+            <h2>«وقتی میخندی، خیلی خوشگلتری!»</h2>
+            <p>لبخند ایده‌آل خود را با مشاورهٔ تخصصی و اختصاصی در کلینیک میراث آغاز کنید.</p>
+          </div>
+          <button class="btn btn-primary" data-open-sheet="consultation">درخواست مشاوره رایگان <span aria-hidden="true">←</span></button>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer><div class="wrap footer-inner"><strong>© ۱۴۰۵ کلینیک دندان‌پزشکی زیبایی میراث</strong><span>طراحی لبخند · لمینیت · کامپوزیت</span></div></footer>
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap footer-content">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="logo/logo.png" alt="لوگوی کلینیک میراث" class="footer-logo" width="40" height="40">
+          <div>
+            <strong style="font-size:1.05rem;color:var(--primary-deep);display:block;">کلینیک دندان‌پزشکی زیبایی میراث</strong>
+            <small style="color:var(--muted)">طراحی اختصاصی لبخند · لمینیت سرامیکی · کامپوزیت ونیر</small>
+          </div>
+        </div>
+        <div class="footer-slogan">«وقتی میخندی، خیلی خوشگلتری!»</div>
+      </div>
+      <div class="footer-info">
+        <div>
+          <strong>آدرس:</strong> سعادت‌آباد، سرو غربی، خیابان بخشایش، کوچه ۱۷ غربی، برج عرفان، طبقه اول، واحد ۱۰۳.
+        </div>
+        <div class="ltr" style="font-weight:700;">
+          📞 ۰۹۱۲ ۵۹۳ ۴۳۰۲ &nbsp;|&nbsp; ۰۹۱۲ ۵۱۶ ۸۲۷۸
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© ۱۴۰۵ کلینیک دندان‌پزشکی میراث — تمامی حقوق محفوظ است.</span>
+        <a href="#home" style="color:var(--primary);font-weight:600;">بازگشت به بالا ↑</a>
+      </div>
+    </div>
+  </footer>
 
-  <nav class="bottom-nav" aria-label="ناوبری موبایل"><a class="nav-item active" href="#home" data-nav="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></svg><span>خانه</span></a><a class="nav-item" href="#services" data-nav="services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3c-3 0-5 2-5 5 0 4 1 5 1 8 0 3 1 5 3 5 1 0 1.5-3 3-3s2 3 3 3c2 0 3-2 3-5 0-3 1-4 1-8 0-3-2-5-5-5-1 0-1.5 1-3 1s-2-1-3-1Z"/></svg><span>خدمات</span></a><a class="nav-item" href="#results" data-nav="results"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.3"/><path d="m21 15-5-5L5 21"/></svg><span>نمونه‌کارها</span></a><button class="nav-item" data-open-sheet="consultation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8 8 0 0 1-3.6-.8L4 20l1.7-3.5A7.5 7.5 0 1 1 20 11.5Z"/><path d="M8 12h8M12 8v8"/></svg><span>مشاوره</span></button><button class="nav-item" data-open-sheet="account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.5"/><path d="M5 21c.6-4 3-6 7-6s6.4 2 7 6"/></svg><span>حساب من</span></button></nav>
+  <!-- MOBILE BOTTOM NAV -->
+  <nav class="bottom-nav" aria-label="ناوبری موبایل">
+    <a class="nav-item active" href="#home" data-nav="home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></svg>
+      <span>خانه</span>
+    </a>
+    <a class="nav-item" href="#services" data-nav="services">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3c-3 0-5 2-5 5 0 4 1 5 1 8 0 3 1 5 3 5 1 0 1.5-3 3-3s2 3 3 3c2 0 3-2 3-5 0-3 1-4 1-8 0-3-2-5-5-5-1 0-1.5 1-3 1s-2-1-3-1Z"/></svg>
+      <span>خدمات</span>
+    </a>
+    <a class="nav-item" href="#results" data-nav="results">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.3"/><path d="m21 15-5-5L5 21"/></svg>
+      <span>لبخندها</span>
+    </a>
+    <a class="nav-item" href="#contact" data-nav="contact">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>آدرس</span>
+    </a>
+    <button class="nav-item" data-open-sheet="consultation">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8 8 0 0 1-3.6-.8L4 20l1.7-3.5A7.5 7.5 0 1 1 20 11.5Z"/><path d="M8 12h8M12 8v8"/></svg>
+      <span>مشاوره</span>
+    </button>
+  </nav>
 
-  <div class="sheet-layer" id="consultation-sheet" role="dialog" aria-modal="true" aria-labelledby="consultation-title"><div class="sheet-backdrop" data-close-sheet></div><section class="sheet"><div class="sheet-handle" aria-hidden="true"></div><div class="sheet-head"><div><h2 id="consultation-title">درخواست مشاوره</h2><p>اطلاعات کوتاه شما برای هماهنگی زمان تماس.</p></div><button class="icon-btn" type="button" data-close-sheet aria-label="بستن">×</button></div><form id="consultation-form"><div class="form-grid"><div class="field"><label for="name">نام و نام خانوادگی</label><input id="name" name="name" autocomplete="name" required></div><div class="field"><label for="phone">شماره تماس</label><input id="phone" name="phone" class="ltr" inputmode="tel" autocomplete="tel" required></div><div class="field full"><label for="service">خدمت موردنظر</label><select id="service" name="service" required><option value="">انتخاب کنید</option><option>کامپوزیت</option><option>لمینیت</option><option>طراحی لبخند</option><option>هنوز مطمئن نیستم</option></select></div><div class="field full"><label for="note">توضیح کوتاه (اختیاری)</label><textarea id="note" name="note" placeholder="مثلاً هدف یا زمان ترجیحی شما"></textarea></div></div><label class="consent"><input type="checkbox" required> <span>با ثبت این فرم با تماس کلینیک برای هماهنگی مشاوره موافقم.</span></label><button class="btn btn-primary" type="submit">ثبت درخواست</button><p class="form-status" id="form-status" role="status"></p></form></section></div>
-  <div class="sheet-layer" id="account-sheet" role="dialog" aria-modal="true" aria-labelledby="account-title"><div class="sheet-backdrop" data-close-sheet></div><section class="sheet"><div class="sheet-handle" aria-hidden="true"></div><div class="sheet-head"><div><h2 id="account-title">حساب من</h2><p>این بخش پس از آماده‌شدن احراز هویت فعال می‌شود.</p></div><button class="icon-btn" type="button" data-close-sheet aria-label="بستن">×</button></div><div class="account-state">در نسخهٔ فعلی، حساب مشتری و مشاهدهٔ سوابق هنوز فعال نشده است. برای شروع، از «درخواست مشاوره» استفاده کنید.</div><button class="btn btn-primary" style="margin-top:16px" data-open-sheet="consultation">درخواست مشاوره</button></section></div>
-  <div class="sheet-layer" id="gallery-sheet" role="dialog" aria-modal="true" aria-labelledby="gallery-title"><div class="sheet-backdrop" data-close-sheet></div><section class="sheet"><div class="sheet-handle" aria-hidden="true"></div><div class="sheet-head"><div><h2 id="gallery-title">نمونه‌کارها</h2><p>گالری کامل پس از تأیید مجوز انتشار تصاویر تکمیل می‌شود.</p></div><button class="icon-btn" type="button" data-close-sheet aria-label="بستن">×</button></div><div class="account-state">این prototype فقط چهار تصویر تأییدنشده برای بررسی چیدمان را نمایش می‌دهد. پیش از انتشار عمومی، رضایت بیمار و عنوان دقیق هر تصویر باید ثبت شود.</div></section></div>
+  <!-- BOTTOM SHEETS -->
+  <div class="sheet-layer" id="consultation-sheet" role="dialog" aria-modal="true" aria-labelledby="consultation-title">
+    <div class="sheet-backdrop" data-close-sheet></div>
+    <section class="sheet">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <div class="sheet-head">
+        <div>
+          <h2 id="consultation-title">درخواست مشاوره</h2>
+          <p>اطلاعات خود را وارد کنید تا کارشناسان کلینیک میراث جهت هماهنگی با شما تماس بگیرند.</p>
+        </div>
+        <button class="icon-btn" type="button" data-close-sheet aria-label="بستن">×</button>
+      </div>
+      <form id="consultation-form">
+        <div class="form-grid">
+          <div class="field">
+            <label for="name">نام و نام خانوادگی</label>
+            <input id="name" name="name" autocomplete="name" required placeholder="مثال: علی رضایی">
+          </div>
+          <div class="field">
+            <label for="phone">شماره تماس</label>
+            <input id="phone" name="phone" class="ltr" inputmode="tel" autocomplete="tel" required placeholder="۰۹۱۲۳۴۵۶۷۸۹">
+          </div>
+          <div class="field full">
+            <label for="service">خدمت موردنظر</label>
+            <select id="service" name="service" required>
+              <option value="">انتخاب فرمایید</option>
+              <option>طراحی لبخند (Smile Design)</option>
+              <option>کامپوزیت ونیر</option>
+              <option>لمینیت سرامیکی</option>
+              <option>معاینه عمومی و مشاوره</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="note">توضیح کوتاه (اختیاری)</label>
+            <textarea id="note" name="note" placeholder="مثلاً هدف درمانی یا روز و ساعت پیشنهادی شما..."></textarea>
+          </div>
+        </div>
+        <label class="consent">
+          <input type="checkbox" required checked>
+          <span>با ثبت این فرم، با تماس کلینیک میراث جهت هماهنگی زمان ویزیت موافقم.</span>
+        </label>
+        <button class="btn btn-primary" type="submit" style="width:100%">ثبت و ارسال درخواست مشاوره</button>
+        <p class="form-status" id="form-status" role="status"></p>
+        <div style="margin-top:16px;font-size:.78rem;color:var(--muted);text-align:center;">
+          آدرس: سعادت‌آباد، سرو غربی، خیابان بخشایش، برج عرفان، ط ۱، واحد ۱۰۳
+        </div>
+      </form>
+    </section>
+  </div>
 
+  <div class="sheet-layer" id="gallery-sheet" role="dialog" aria-modal="true" aria-labelledby="gallery-title">
+    <div class="sheet-backdrop" data-close-sheet></div>
+    <section class="sheet">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <div class="sheet-head">
+        <div>
+          <h2 id="gallery-title">لبخندهایی که ساخته‌ایم</h2>
+          <p>مجموعه نمونه‌کارهای طراحی لبخند، لمینیت و کامپوزیت کلینیک میراث.</p>
+        </div>
+        <button class="icon-btn" type="button" data-close-sheet aria-label="بستن">×</button>
+      </div>
+      <div class="result-strip" style="grid-template-columns:repeat(2, 1fr);margin-top:16px;">
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);"><img src="results/photo_5_2026-05-27_19-06-46.jpg" alt="نمونه کار ۵" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);"><img src="results/photo_6_2026-05-27_19-06-46.jpg" alt="نمونه کار ۶" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);"><img src="results/photo_7_2026-05-27_19-06-46.jpg" alt="نمونه کار ۷" style="width:100%;height:100%;object-fit:cover;"></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);"><img src="results/photo_8_2026-05-27_19-06-46.jpg" alt="نمونه کار ۸" style="width:100%;height:100%;object-fit:cover;"></figure>
+      </div>
+      <div style="margin-top:20px;text-align:center;">
+        <button class="btn btn-primary" data-open-sheet="consultation">رزرو نوبت مشاوره</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- SCRIPT & ANIME.JS ANIMATIONS -->
   <script>
     (() => {
       const qs = (s, root = document) => root.querySelector(s);
@@ -256,21 +636,119 @@
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const setActive = id => qsa('[data-nav]').forEach(item => item.classList.toggle('active', item.dataset.nav === id));
       const sections = qsa('main section[id]');
-      const observer = 'IntersectionObserver' in window ? new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }), { threshold: .12 }) : null;
-      qsa('[data-reveal]').forEach(el => observer ? observer.observe(el) : el.classList.add('visible'));
-      sections.forEach(section => { if (observer) new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) setActive(section.id); }), { rootMargin: '-42% 0px -52% 0px' }).observe(section); });
+      const observer = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .12 }) : null;
 
-      const openSheet = name => { const layer = qs('#' + name + '-sheet'); if (!layer) return; qsa('.sheet-layer.open').forEach(x => x.classList.remove('open')); layer.classList.add('open'); document.body.classList.add('sheet-open'); const focus = qs('input, select, button', layer); if (focus) setTimeout(() => focus.focus(), 80); };
-      const closeSheets = () => { qsa('.sheet-layer.open').forEach(x => x.classList.remove('open')); document.body.classList.remove('sheet-open'); };
+      qsa('[data-reveal]').forEach(el => observer ? observer.observe(el) : el.classList.add('visible'));
+      sections.forEach(section => {
+        if (observer) new IntersectionObserver(entries => {
+          entries.forEach(entry => { if (entry.isIntersecting) setActive(section.id); });
+        }, { rootMargin: '-40% 0px -50% 0px' }).observe(section);
+      });
+
+      // Sheet handling
+      const openSheet = name => {
+        const layer = qs('#' + name + '-sheet');
+        if (!layer) return;
+        qsa('.sheet-layer.open').forEach(x => x.classList.remove('open'));
+        layer.classList.add('open');
+        document.body.classList.add('sheet-open');
+        const focus = qs('input, select, button', layer);
+        if (focus) setTimeout(() => focus.focus(), 80);
+      };
+      const closeSheets = () => {
+        qsa('.sheet-layer.open').forEach(x => x.classList.remove('open'));
+        document.body.classList.remove('sheet-open');
+      };
       qsa('[data-open-sheet]').forEach(btn => btn.addEventListener('click', () => openSheet(btn.dataset.openSheet)));
       qsa('[data-close-sheet]').forEach(btn => btn.addEventListener('click', closeSheets));
       document.addEventListener('keydown', event => { if (event.key === 'Escape') closeSheets(); });
-      qsa('.faq-q').forEach(button => button.addEventListener('click', () => { const faq = button.parentElement; const answer = qs('.faq-a', faq); const isOpen = faq.classList.toggle('open'); button.setAttribute('aria-expanded', String(isOpen)); answer.style.maxHeight = isOpen ? answer.scrollHeight + 'px' : '0px'; }));
-      qs('#consultation-form').addEventListener('submit', event => { event.preventDefault(); qs('#form-status').textContent = 'این نسخهٔ نمایشی هنوز به API متصل نیست؛ اطلاعات ارسال نشد. فرم و اعتبارسنجی آمادهٔ اتصال به POST /api/v1/consultations است.'; });
 
+      // FAQ accordion
+      qsa('.faq-q').forEach(button => button.addEventListener('click', () => {
+        const faq = button.parentElement;
+        const answer = qs('.faq-a', faq);
+        const isOpen = faq.classList.toggle('open');
+        button.setAttribute('aria-expanded', String(isOpen));
+        answer.style.maxHeight = isOpen ? answer.scrollHeight + 'px' : '0px';
+      }));
+
+      // Consultation Form submit (WhatsApp redirect fallback)
+      qs('#consultation-form').addEventListener('submit', event => {
+        event.preventDefault();
+        const name = qs('#name').value.trim();
+        const phone = qs('#phone').value.trim();
+        const service = qs('#service').value;
+        const note = qs('#note').value.trim();
+        qs('#form-status').innerHTML = '<span style="color:var(--success)">درخواست شما با موفقیت ثبت شد. در حال انتقال به واتساپ کلینیک...</span>';
+        const msg = encodeURIComponent(`سلام، درخواست مشاوره کلینیک میراث:\nنام: ${name}\nشماره: ${phone}\nخدمت: ${service}${note ? '\nتوضیحات: ' + note : ''}`);
+        setTimeout(() => {
+          window.open(`https://wa.me/989125168278?text=${msg}`, '_blank');
+        }, 900);
+      });
+
+      // Anime.js Hero animation
       const path = qs('.smile-path');
       const designElements = qsa('.node, .node-ring, .tooth-line');
-      if (!reduce && window.anime && path) { const timeline = anime.timeline({ easing: 'easeOutCubic' }); timeline.add({ targets: path, strokeDashoffset: [1000, 0], duration: 900 }).add({ targets: '.node-ring', opacity: [0, .75], scale: [0, 1], duration: 380, delay: anime.stagger(120) }, '-=300').add({ targets: '.node', opacity: [0, 1], scale: [0, 1], duration: 300, delay: anime.stagger(120) }, '-=340').add({ targets: '.tooth-line', opacity: [0, 1], translateY: [8, 0], duration: 500, delay: anime.stagger(90) }, '-=320'); } else { if (path) path.style.strokeDashoffset = 0; designElements.forEach(el => el.style.opacity = 1); }
+      if (!reduce && window.anime) {
+        // Hero copy staggered entrance
+        anime({
+          targets: '.hero-copy > *',
+          opacity: [0, 1],
+          translateY: [24, 0],
+          delay: anime.stagger(90, { start: 150 }),
+          duration: 750,
+          easing: 'easeOutQuart'
+        });
+
+        if (path) {
+          const timeline = anime.timeline({ easing: 'easeOutCubic' });
+          timeline
+            .add({
+              targets: path,
+              strokeDashoffset: [1000, 0],
+              duration: 1100
+            })
+            .add({
+              targets: '.node-ring',
+              opacity: [0, .8],
+              scale: [0, 1],
+              duration: 400,
+              delay: anime.stagger(120)
+            }, '-=350')
+            .add({
+              targets: '.node',
+              opacity: [0, 1],
+              scale: [0, 1],
+              duration: 320,
+              delay: anime.stagger(120)
+            }, '-=360')
+            .add({
+              targets: '.tooth-line',
+              opacity: [0, 1],
+              translateY: [10, 0],
+              duration: 520,
+              delay: anime.stagger(90)
+            }, '-=320')
+            .add({
+              targets: '.hero-art',
+              boxShadow: [
+                '0 20px 60px rgba(56, 32, 71, .09)',
+                '0 24px 70px rgba(56, 32, 71, .16)'
+              ],
+              duration: 600
+            }, '-=200');
+        }
+      } else {
+        if (path) path.style.strokeDashoffset = 0;
+        designElements.forEach(el => el.style.opacity = 1);
+      }
     })();
   </script>
 </body>
